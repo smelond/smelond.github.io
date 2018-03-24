@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F03%2F24%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[快速启动创建一个新的帖子1$ hexo new "My New Post" 删除本地静态文件1$ hexo clean 生成静态文件1$ hexo generate 运行服务器1$ hexo server 部署到远程站点12$ hexo deploy$ hexo deploy 插入连接More info: Writing 1More info: [Writing](https://hexo.io/docs/writing.html)]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>网络安全</tag>
+      </tags>
+  </entry>
+</search>
