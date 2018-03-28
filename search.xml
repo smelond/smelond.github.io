@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F03%2F24%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[快速启动创建一个新的帖子1$ hexo new "My New Post" 删除本地静态文件1$ hexo clean 生成静态文件1$ hexo generate 运行服务器1$ hexo server 部署到远程站点12$ hexo deploy$ hexo deploy 插入连接More info: Writing 1More info: [Writing](https://hexo.io/docs/writing.html)]]></content>
+    <title><![CDATA[sql注入之入门]]></title>
+    <url>%2F2018%2F03%2F28%2Fsql%E6%B3%A8%E5%85%A5%E4%B9%8B%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[MySql基础语法mysql无非就是增删改查 现在，为了我们接下来的实验，我们需要切换数据库到test，mysql自带一个test数据库，没有装mysql的自行百度切换方式：12mysql&gt; use test;Database changed //有这条提示就切换成功了 create 创建表首先我们先来创建一个表名为：admin，里面包含了id，username，password，email：123456mysql&gt; create table admin( -&gt; id int(3) auto_increment not null primary key, -&gt; username varchar(15) not null, -&gt; password char(32), -&gt; email varchar(30));Query OK, 0 rows affected (0.01 sec) --有了这个提示就是创建成功了 现在我们已经成功创建了一个,可以用desc来查看表结构：12345678910mysql&gt; desc admin;+----------+-------------+------+-----+---------+----------------+| Field | Type | Null | Key | Default | Extra |+----------+-------------+------+-----+---------+----------------+| id | int(3) | NO | PRI | NULL | auto_increment || username | varchar(15) | NO | | NULL | || password | char(32) | YES | | NULL | || email | varchar(30) | YES | | NULL | |+----------+-------------+------+-----+---------+----------------+4 rows in set (0.04 sec)]]></content>
       <categories>
-        <category>网络安全</category>
+        <category>web安全</category>
       </categories>
       <tags>
-        <tag>网络安全</tag>
+        <tag>web安全</tag>
       </tags>
   </entry>
 </search>
