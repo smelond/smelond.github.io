@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://smelond.com/"/>
-  <updated>2018-04-03T11:14:00.669Z</updated>
+  <updated>2018-04-03T11:31:40.762Z</updated>
   <id>http://smelond.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://smelond.com/2018/04/02/sql%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B/"/>
     <id>http://smelond.com/2018/04/02/sql注入之注入类型/</id>
     <published>2018-04-02T00:51:30.000Z</published>
-    <updated>2018-04-03T11:14:00.669Z</updated>
+    <updated>2018-04-03T11:31:40.762Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;/blockquote&gt;当然，前面说过了sql注入，但是那只是基于数字型，当然还有其他类型，比如字符串型，搜索型，提交注入（GET、POST型）
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;也许是在那楼梯间转身的微笑！！！&lt;/blockquote&gt;当然，前面说过了sql注入，但是那只是基于数字型，当然还有其他类型，比如字符串型，搜索型，提交注入（GET、POST型）
     
     </summary>
     
