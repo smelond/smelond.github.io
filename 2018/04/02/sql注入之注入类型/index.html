@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://smelond.com/image_upload/2018/03/20180402154954.png">
 <meta property="og:image" content="http://smelond.com/image_upload/2018/03/20180402161702.png">
 <meta property="og:image" content="http://smelond.com/image_upload/2018/03/20180402163912.png">
-<meta property="og:updated_time" content="2018-04-02T10:20:04.161Z">
+<meta property="og:updated_time" content="2018-04-03T11:14:00.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql注入之注入类型">
 <meta name="twitter:description" content="当然，前面说过了sql注入，但是那只是基于数字型，当然还有其他类型，比如字符串型，搜索型，提交注入（GET、POST型）">
@@ -527,6 +527,7 @@
 <p>用户名：<a href="mailto:sqlinstr---root@localhost---5.5.53" target="_blank" rel="noopener">sqlinstr---root@localhost---5.5.53</a></p>
 <p>爆账号密码：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asd' and 1=1 union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">concat</span>(username,<span class="string">'--'</span>,<span class="keyword">password</span>),<span class="number">3</span> <span class="keyword">from</span> <span class="keyword">admin</span> <span class="keyword">where</span> <span class="number">1</span>=<span class="number">1</span>#asad</span><br></pre></td></tr></table></figure></p>
 <p>注意，在简单的查询语句后面不能加and 和 or ，所以我们这里加上了where<br><img src="/image_upload/2018/03/20180402163912.png" alt="Alt text"></p>
+<p>好了，差不多了，这个SQL注入类型就先说这么多<del>~</del>~<br>当然，注入里面还有其他的注入，比如：cookie注入，http头注入</p>
 
       
     </div>
@@ -546,7 +547,7 @@
   <p><span>本文标题:</span><a href="/2018/04/02/sql注入之注入类型/">sql注入之注入类型</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 smelond 的个人博客">smelond</a></p>
   <p><span>发布时间:</span>2018年04月02日 - 08:04</p>
-  <p><span>最后更新:</span>2018年04月02日 - 18:04</p>
+  <p><span>最后更新:</span>2018年04月03日 - 19:04</p>
   <p><span>原始链接:</span><a href="/2018/04/02/sql注入之注入类型/" title="sql注入之注入类型">http://smelond.com/2018/04/02/sql注入之注入类型/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2018/04/02/sql注入之注入类型/"  aria-label="复制成功！"></i></span>
   </p>
