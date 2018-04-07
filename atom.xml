@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://smelond.com/"/>
-  <updated>2018-04-03T11:33:27.786Z</updated>
+  <updated>2018-04-07T11:42:48.665Z</updated>
   <id>http://smelond.com/</id>
   
   <author>
@@ -17,15 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>sql注入之盲注攻击</title>
+    <link href="http://smelond.com/2018/04/04/sql%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%9B%B2%E6%B3%A8%E6%94%BB%E5%87%BB/"/>
+    <id>http://smelond.com/2018/04/04/sql注入之盲注攻击/</id>
+    <published>2018-04-04T01:30:13.000Z</published>
+    <updated>2018-04-07T11:42:48.665Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;我倾尽一生愿姑娘回眸一笑❤️&lt;/blockquote&gt;这几天一直在复习这个sql注入，所以我把sql盲注也拿出来，什么是sql盲注，简单的说，盲注其实也是sql注入，他是sql注入攻击方式的其中一种，但是他比普通的sql注入危害更大。
+    
+    </summary>
+    
+      <category term="web安全" scheme="http://smelond.com/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="web安全" scheme="http://smelond.com/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>sql注入之注入类型</title>
     <link href="http://smelond.com/2018/04/02/sql%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B/"/>
     <id>http://smelond.com/2018/04/02/sql注入之注入类型/</id>
     <published>2018-04-02T00:51:30.000Z</published>
-    <updated>2018-04-03T11:33:27.786Z</updated>
+    <updated>2018-04-04T02:36:50.604Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;也许是在那楼梯间转身的微笑吧！！！&lt;/blockquote&gt;当然，前面说过了sql注入，但是那只是基于数字型，当然还有其他类型，比如字符串型，搜索型，提交注入（GET、POST型）
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;你若盛开，清风自来。&lt;/blockquote&gt;当然，前面说过了sql注入，但是那只是基于数字型，当然还有其他类型，比如字符串型，搜索型，提交注入（GET、POST型）
     
     </summary>
     
@@ -41,7 +61,7 @@
     <link href="http://smelond.com/2018/03/28/sql%E6%B3%A8%E5%85%A5%E4%B9%8B%E5%85%A5%E9%97%A8/"/>
     <id>http://smelond.com/2018/03/28/sql注入之入门/</id>
     <published>2018-03-28T12:59:33.000Z</published>
-    <updated>2018-04-02T01:19:02.731Z</updated>
+    <updated>2018-04-04T01:49:33.219Z</updated>
     
     <summary type="html">
     
