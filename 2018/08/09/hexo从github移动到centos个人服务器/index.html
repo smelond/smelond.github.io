@@ -99,7 +99,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://smelond.com/image_upload/2018/08/20180809181258.png">
 <meta property="og:image" content="http://smelond.com/image_upload/2018/08/20180809200803.png">
-<meta property="og:updated_time" content="2018-08-09T12:11:00.643Z">
+<meta property="og:updated_time" content="2018-08-09T13:12:36.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo从github移动到centos个人服务器">
 <meta name="twitter:description" content="我是做了什么错事，你要这样对我最经几天，好像访问github速度又变慢了，导致我的博客也半天打不开，接着就去搬瓦工买了一台（不是打广告），接着又开始琢磨起来如何将hexo从github移动到个人服务器。">
@@ -458,7 +458,7 @@
 <h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><p>在第上一步中建立的裸仓中（hexo.git目录），找到hooks目录下的post-update.sample,将他重命名为post-update<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/git/hexo.git/hooks/</span><br><span class="line">mv post-update.sample post-update</span><br></pre></td></tr></table></figure></p>
 <p>接下来在本地的hexo项目中，编辑_config.yml，需要修改deploy，只需要将repo后面的域名修改为你的服务器地址<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@smelond.com:/home/git/hexo.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
 <p>接着安装hexo-deployer-git<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>完成后就可以执行了<br>hexo new “”<br>hexo c<br>hexo g<br>hexo d</p>
+<p>完成后就可以执行了<br>hexo new “”<br>hexo clean<br>hexo g<br>hexo d</p>
 <p>最后 献上一个巨大的坑<br><img src="/image_upload/2018/08/20180809200803.png" alt="Alt text"><br>如果遇到类似以上问题，可能是你的ssh登录端口部位默认的22<br>解决方法：<br>在_config.yml配置文件中将 <a href="mailto:git@smelond.com">git@smelond.com</a>:/home/git/hexo.git 修改为 ssh:<a href="mailto://git@smelond.com">//git@smelond.com</a>:端口号/home/git/hexo.git<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">ssh://git@smelond.com:9999/home/git/hexo.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
 
       
@@ -479,7 +479,7 @@
   <p><span>本文标题:</span><a href="/2018/08/09/hexo从github移动到centos个人服务器/">hexo从github移动到centos个人服务器</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 smelond 的个人博客">smelond</a></p>
   <p><span>发布时间:</span>2018年08月09日 - 17:08</p>
-  <p><span>最后更新:</span>2018年08月09日 - 20:08</p>
+  <p><span>最后更新:</span>2018年08月09日 - 21:08</p>
   <p><span>原始链接:</span><a href="/2018/08/09/hexo从github移动到centos个人服务器/" title="hexo从github移动到centos个人服务器">http://smelond.com/2018/08/09/hexo从github移动到centos个人服务器/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2018/08/09/hexo从github移动到centos个人服务器/"  aria-label="复制成功！"></i></span>
   </p>
