@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://smelond.com/"/>
-  <updated>2018-08-10T00:33:29.949Z</updated>
+  <updated>2018-08-27T10:42:52.135Z</updated>
   <id>http://smelond.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>s2-057复现</title>
+    <link href="http://smelond.com/2018/08/27/s2-057%E5%A4%8D%E7%8E%B0/"/>
+    <id>http://smelond.com/2018/08/27/s2-057复现/</id>
+    <published>2018-08-27T10:07:03.000Z</published>
+    <updated>2018-08-27T10:42:52.135Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;恩 我还在等一个人 等一个让九月的风变暖的人&lt;/blockquote&gt;这两天看到St2-057漏洞挺火的，他是一个远程代码执行的高危漏洞，编号为CVE-2018-11776，当然在实际场景中存在一定局限性，需要满足一定条件。
+    
+    </summary>
+    
+      <category term="Struts2" scheme="http://smelond.com/categories/Struts2/"/>
+    
+    
+      <category term="Struts2" scheme="http://smelond.com/tags/Struts2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo从github移动到centos个人服务器</title>
     <link href="http://smelond.com/2018/08/09/hexo%E4%BB%8Egithub%E7%A7%BB%E5%8A%A8%E5%88%B0centos%E4%B8%AA%E4%BA%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://smelond.com/2018/08/09/hexo从github移动到centos个人服务器/</id>
     <published>2018-08-09T09:51:41.000Z</published>
-    <updated>2018-08-10T00:33:29.949Z</updated>
+    <updated>2018-08-10T01:06:08.192Z</updated>
     
     <summary type="html">
     

