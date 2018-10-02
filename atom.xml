@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://smelond.com/"/>
-  <updated>2018-09-04T08:08:41.235Z</updated>
+  <updated>2018-10-02T15:26:56.586Z</updated>
   <id>http://smelond.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>wordpress-js劫持分析</title>
+    <link href="http://smelond.com/2018/10/02/wordpress-js%E5%8A%AB%E6%8C%81%E5%88%86%E6%9E%90/"/>
+    <id>http://smelond.com/2018/10/02/wordpress-js劫持分析/</id>
+    <published>2018-10-02T09:58:30.000Z</published>
+    <updated>2018-10-02T15:26:56.586Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;倾我所能，尽我所有！&lt;/blockquote&gt;就在前天晚上，朋友的wordpress被劫持，当然，我是很懵逼的，因为他那个网站所有内容是我帮他搭建的。打开网站，15秒左右会自动跳转到了一个国外的网站，跳转后的网站上方写着index Online Schools，
+    
+    </summary>
+    
+      <category term="wordpress" scheme="http://smelond.com/categories/wordpress/"/>
+    
+    
+      <category term="js劫持" scheme="http://smelond.com/tags/js%E5%8A%AB%E6%8C%81/"/>
+    
+      <category term="wordpress" scheme="http://smelond.com/tags/wordpress/"/>
+    
+  </entry>
   
   <entry>
     <title>LFI以及RFI(文件包含)伪协议利用小技巧</title>
@@ -85,11 +107,11 @@
     <link href="http://smelond.com/2018/06/21/hexo%E4%BB%8Ewindows%E6%90%AC%E5%AE%B6%E5%88%B0deepin/"/>
     <id>http://smelond.com/2018/06/21/hexo从windows搬家到deepin/</id>
     <published>2018-06-21T13:16:43.000Z</published>
-    <updated>2018-06-21T15:32:37.929Z</updated>
+    <updated>2018-10-02T14:52:45.879Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;坑多无解...&lt;/blockquote&gt;最经重新装了一个deepin的系统，如果按照教程再来装一次hexo，接着又修改主题，外加上一些繁琐的配置，当然，这是不可能的，接下来我就开始踏上了猜坑之旅。。。
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;坑多无解...&lt;/blockquote&gt;最近重新装了一个deepin的系统，如果按照教程再来装一次hexo，接着又修改主题，外加上一些繁琐的配置，当然，这是不可能的，接下来我就开始踏上了猜坑之旅。。。
     
     </summary>
     

