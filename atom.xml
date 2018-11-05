@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://smelond.com/"/>
-  <updated>2018-10-02T15:36:52.451Z</updated>
+  <updated>2018-11-05T15:53:48.332Z</updated>
   <id>http://smelond.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>subcollect子域名在线搜集</title>
+    <link href="http://smelond.com/2018/11/05/subcollect%E5%AD%90%E5%9F%9F%E5%90%8D%E5%9C%A8%E7%BA%BF%E6%90%9C%E9%9B%86/"/>
+    <id>http://smelond.com/2018/11/05/subcollect子域名在线搜集/</id>
+    <published>2018-11-05T08:47:57.000Z</published>
+    <updated>2018-11-05T15:53:48.332Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;让你难过的事情，有一天，你一定会笑着说出来。&lt;/blockquote&gt;最近刚开始挖SRC，发现搜集子域名是一件很老火的事情，看到网上也有一些子域名爆破之类的脚本，但是这样有的域名会搜集不到，所以闲的没事，我写了一个子域名在线搜集，利用百度、dns、https搜集子域名，实现很简单，下面说一下实现原理以及怎么使用和扩展
+    
+    </summary>
+    
+      <category term="web安全" scheme="http://smelond.com/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="子域名" scheme="http://smelond.com/tags/%E5%AD%90%E5%9F%9F%E5%90%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>wordpress-js劫持分析</title>
