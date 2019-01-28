@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[123]]></title>
+    <url>%2F2019%2F01%2F28%2F123%2F</url>
+    <content type="text"><![CDATA[qweqwe]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[subcollect子域名在线搜集]]></title>
     <url>%2F2018%2F11%2F05%2Fsubcollect%E5%AD%90%E5%9F%9F%E5%90%8D%E5%9C%A8%E7%BA%BF%E6%90%9C%E9%9B%86%2F</url>
     <content type="text"><![CDATA[subcollect(子域名在线搜集)是一款可以在线搜集子域名的脚本工具，使用Python3编写，在平时搜集子域名时，一般常见和使用的最多的办法是爆破，或者在第三方网站一个域名一个域名的查询，这样会显得很麻烦，并且工作效率也很慢。虽然有一种重复造轮子的感觉，但是对于自己来说，写一款工具也是很有成就感的（虽然只有一时） 使用直接 git clone https://github.com/smelond/subcollectPython312345git clone https://github.com/smelond/subcollectcd subcollectpython subcollect.py -u baidu.com等待获取结果...cd output # 这里可以看到返回的子域名 需要注意一点的是，如果直接执行脚本，netcraft是不会执行的，需要先打开netcraft网站，然后拿到cookie，将cookie写到self.headerparam = {} 这个字典里面，因为他过期的好像很快，像下面这样添加： 效果图 下方全是废话…… 实现原理下面应该算一种思路，对于新人来说还是有很大的帮助的（我就是一个新人），有师傅看到的，也希望能给我指点指点 结构：1234567891011121314├── libs #核心目录（其实我也不知道这是个啥鬼）│ ├── core.py│ └── start.py├── output # 输出目录├── setting.py # 设置一些变量，比如关闭socks5├── storage # 写入数据库相关，但需要修改start.py文件│ └── my_sql.py├── subcollect.py # 启动脚本├── sub_file # 搜集域名的一些网站，都可以写入这个里面│ ├── baidu.py│ ├── crt.py│ ├── netcraft.py│ └── public.py└── UserAgent.txt # 这玩意是复制的菜刀的 看到上面发现命令规则和模块之类的还是很水的，主要实现原理是将输入的域名传输到start.py文件，然后里面启动了一个多进程分别对sub_file里面文件的类进行执行并且取回结果，结果是一个去重复的列表，所有结果全部返回到start.py后进行去重复，判断域名是否有解析到ip上，如果有则写入到output目录里面而sub_file目录里面的文件是通过requests请求域名，然后通过BeautifulSoup进行查找出域名，去重复返回output目录用于将最后的信息输出，格式为:domain_name ipstorage目录里面的my_sql.py可以将文件写入数据库，但是我这里没有配置，想到这个的原因是因为后面可能会对脚本进行优化，因为上次看到一位大佬的信息搜集思路图subcollect.py 直接使用即可1python subcollect.py -u smelond.com 新增模块可以发现sub_file目录里面只有很少的在线搜集域名的网站，当然其实是有很多的第三方网站，我这里主要写了crt和netcraft，因为他们基于netcraft和https证书获取域名，当然，还有很多（口水话。） 新增方法打开sub_file目录，随便创建一个abc.py 然后在里面写入你要爬取的网站的代码（这是废话），写代码之前先导入当前目录的public模块，因为这样你可以直接调用setting.py和core.py，这样你就可以不用重新写请求网站获取内容了，完全可以直接将网页html源码拿到手，其实看一下sub_file目录下其他的代码就知道怎么写了大致是这样:12345678910111213# /usr/bin/env python# _*_ coding:utf-8 _*_# author: smelond# blog: https://smelond.comfrom .public import *class excf: def __init__(self): self.headerparam = &#123;&#125; # 存放cookie的字典 def get_domain(self, param): pass 在setting.py里面将你的新文件写入进去，在第41行，例如你新建的文件为abc.py那么你需要在下面写上from sub_file import abc]]></content>
