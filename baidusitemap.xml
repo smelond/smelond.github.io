@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://smelond.com/2019/02/11/python%E7%88%AC%E8%99%AB-%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95%E4%B8%80/</loc>
+    <lastmod>2019-02-11T06:10:56.027Z</lastmod>
+    <data>
+        <display>
+        <title>python爬虫[笔记记录一]</title>
+        <pubTime>2019-02-11T02:29:13.000Z</pubTime>
+        
+        <tag>笔记记录</tag>
+         
+        <tag>爬虫</tag>
+         
+        <tag>requests</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://smelond.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://smelond.com/2018/11/05/subcollect%E5%AD%90%E5%9F%9F%E5%90%8D%E5%9C%A8%E7%BA%BF%E6%90%9C%E9%9B%86/</loc>
     <lastmod>2018-12-03T14:32:58.000Z</lastmod>
     <data>
@@ -57,9 +81,9 @@
         
         <tag>hexo</tag>
          
-        <tag>deepin</tag>
-         
         <tag>linux</tag>
+         
+        <tag>deepin</tag>
          
          
            

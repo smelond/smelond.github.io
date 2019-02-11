@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://smelond.com/"/>
-  <updated>2018-12-03T14:32:58.000Z</updated>
+  <updated>2019-02-11T06:10:56.027Z</updated>
   <id>http://smelond.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python爬虫[笔记记录一]</title>
+    <link href="http://smelond.com/2019/02/11/python%E7%88%AC%E8%99%AB-%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95%E4%B8%80/"/>
+    <id>http://smelond.com/2019/02/11/python爬虫-笔记记录一/</id>
+    <published>2019-02-11T02:29:13.000Z</published>
+    <updated>2019-02-11T06:10:56.027Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;你看 TA像不像爱情？&lt;/blockquote&gt;很久没更新博客了，python也忘记的差不多了，本篇文章记录之前学习python的笔记，主要是爬虫，requests、beautifulsoup4、selenium浏览器自动化、等爬虫模块，因为内容比较多，所以分两篇内容写
+    
+    </summary>
+    
+      <category term="Python" scheme="http://smelond.com/categories/Python/"/>
+    
+    
+      <category term="笔记记录" scheme="http://smelond.com/tags/%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="爬虫" scheme="http://smelond.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="requests" scheme="http://smelond.com/tags/requests/"/>
+    
+  </entry>
   
   <entry>
     <title>subcollect子域名在线搜集</title>
@@ -142,9 +166,9 @@
     
       <category term="hexo" scheme="http://smelond.com/tags/hexo/"/>
     
-      <category term="deepin" scheme="http://smelond.com/tags/deepin/"/>
-    
       <category term="linux" scheme="http://smelond.com/tags/linux/"/>
+    
+      <category term="deepin" scheme="http://smelond.com/tags/deepin/"/>
     
   </entry>
   
