@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="smelond&#39;s Blog">
 <meta property="og:description" content="你看 TA像不像爱情？很久没更新博客了，python也忘记的差不多了，本篇文章记录之前学习python的笔记，主要是爬虫，requests、beautifulsoup4、selenium浏览器自动化、等爬虫模块，因为内容比较多，所以分两篇内容写">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-11T06:15:48.154Z">
+<meta property="og:updated_time" content="2019-02-11T06:19:25.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python爬虫[笔记记录一]">
 <meta name="twitter:description" content="你看 TA像不像爱情？很久没更新博客了，python也忘记的差不多了，本篇文章记录之前学习python的笔记，主要是爬虫，requests、beautifulsoup4、selenium浏览器自动化、等爬虫模块，因为内容比较多，所以分两篇内容写">
@@ -426,11 +426,6 @@
 <h2 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h2><blockquote>
 <ul>
 <li>requests 模块<a href="#requests模块">点击跳转</a></li>
-</ul>
-</blockquote>
-<hr>
-<blockquote>
-<ul>
 <li>beautifulsoup4 模块<a href="#beautifulsoup4模块">点击跳转</a></li>
 </ul>
 </blockquote>
@@ -456,8 +451,8 @@
 <p>PUT  用于新增资源或者使用请求中的有效负载替换目标资源的表现形式。</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">result = requests.put(<span class="string">'https://smelond.com/up.txt'</span>, data=open(<span class="string">'123.txt'</span>, <span class="string">'rb'</span>).read()) <span class="comment"># 读取文件内容，上传到url的up.txt文件</span></span><br><span class="line">print(result.status_code) <span class="comment"># 打印状态码，可以根据状态码或其他的内容判断是否上传成功</span></span><br></pre></td></tr></table></figure>
-<h3 id="请求时可携带的其他参数："><a href="#请求时可携带的其他参数：" class="headerlink" title="请求时可携带的其他参数："></a>请求时可携带的其他参数：</h3><p>他们也是一些requests的高级用法<br>在 /python3.7/site-packages/requests/sessions.py 第466行可以看到<br>这些参数几乎对每一个方法都通用，他们分别是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; * params 			把参数加到url后面</span><br><span class="line">&gt; * data   			字典,提交一个post请求</span><br><span class="line">&gt; * headers 		字典,HTTP定制头</span><br><span class="line">&gt; * cookies			字典,携带cookie访问</span><br><span class="line">&gt; * files 			字典,传输文件</span><br><span class="line">&gt; * auth 			元组,支持HTTP认证功能，具体可以产考[传送门](http://docs.python-requests.org/zh_CN/latest/user/authentication.html <span class="string">"身份认证"</span>)</span><br><span class="line">&gt; * timeout			数字,设置访问超时时间</span><br><span class="line">&gt; * allow_redirects bool,重定向</span><br><span class="line">&gt; * proxies 		字典,设置代理访问,支持http、https、socks5</span><br><span class="line">&gt; * hooks			字典,事件挂钩</span><br><span class="line">&gt; * stream 			bool,响应体内容工作流（当使用requests进行下载时，可使用这个参数）</span><br><span class="line">&gt; * verify 			[bool,本地证书路径],SSL 证书验证</span><br><span class="line">&gt; * cert 			元组,客户端证书</span><br><span class="line">&gt; * json 			字典,提交一个json请求</span><br></pre></td></tr></table></figure></p>
-<p>具体可以查看文档：<a href="http://docs.python-requests.org/zh_CN/latest/user/advanced.html" title="传送门" target="_blank" rel="noopener">传送门</a></p>
+<h3 id="请求时可携带的其他参数："><a href="#请求时可携带的其他参数：" class="headerlink" title="请求时可携带的其他参数："></a>请求时可携带的其他参数：</h3><p>他们也是一些requests的高级用法<br>在 /python3.7/site-packages/requests/sessions.py 第466行可以看到<br>这些参数几乎对每一个方法都通用，他们分别是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; * params 			把参数加到url后面</span><br><span class="line">&gt; * data   			字典,提交一个post请求</span><br><span class="line">&gt; * headers			字典,HTTP定制头</span><br><span class="line">&gt; * cookies			字典,携带cookie访问</span><br><span class="line">&gt; * files 			字典,传输文件</span><br><span class="line">&gt; * auth 			元组,支持HTTP认证功能，具体可以产考(http://docs.python-requests.org/zh_CN/latest/user/authentication.html)</span><br><span class="line">&gt; * timeout			数字,设置访问超时时间</span><br><span class="line">&gt; * allow_redirects bool,重定向</span><br><span class="line">&gt; * proxies			字典,设置代理访问,支持http、https、socks5</span><br><span class="line">&gt; * hooks			字典,事件挂钩</span><br><span class="line">&gt; * stream 			bool,响应体内容工作流（当使用requests进行下载时，可使用这个参数）</span><br><span class="line">&gt; * verify 			[bool,本地证书路径],SSL 证书验证</span><br><span class="line">&gt; * cert 			元组,客户端证书</span><br><span class="line">&gt; * json 			字典,提交一个json请求</span><br></pre></td></tr></table></figure></p>
+<p>具体可以查看文档：<a href="http://docs.python-requests.org/zh_CN/latest/user/advanced.html" title="传送门" target="_blank" rel="noopener">python高级用法 传送门</a></p>
 
       
     </div>
