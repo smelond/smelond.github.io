@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://smelond.com/"/>
-  <updated>2019-02-11T08:10:33.047Z</updated>
+  <updated>2019-02-16T10:55:01.383Z</updated>
   <id>http://smelond.com/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>python爬虫[笔记记录二]</title>
+    <link href="http://smelond.com/2019/02/16/python%E7%88%AC%E8%99%AB-%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95%E4%BA%8C/"/>
+    <id>http://smelond.com/2019/02/16/python爬虫-笔记记录二/</id>
+    <published>2019-02-16T08:11:34.000Z</published>
+    <updated>2019-02-16T10:55:01.383Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;如果能控制住粗鄙的狂喜， 就不会有深入骨髓的悲伤 .&lt;/blockquote&gt; 续 python爬虫[笔记记录一]，selenium是浏览器自动化测试框架，他可以模拟用户在浏览器上点击，这篇笔记没有写基本用法，写的是一些常见的用法，当然 它虽然是浏览器自动化，但是它依旧可以和requests和beautifulsoup4搭配使用
+    
+    </summary>
+    
+      <category term="Python" scheme="http://smelond.com/categories/Python/"/>
+    
+    
+      <category term="笔记记录" scheme="http://smelond.com/tags/%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="爬虫" scheme="http://smelond.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="selenium" scheme="http://smelond.com/tags/selenium/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python爬虫[笔记记录一]</title>
     <link href="http://smelond.com/2019/02/11/python%E7%88%AC%E8%99%AB-%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95%E4%B8%80/"/>
     <id>http://smelond.com/2019/02/11/python爬虫-笔记记录一/</id>
     <published>2019-02-11T02:29:13.000Z</published>
-    <updated>2019-02-11T08:10:33.047Z</updated>
+    <updated>2019-02-16T09:03:55.638Z</updated>
     
     <summary type="html">
     
@@ -37,6 +61,8 @@
       <category term="爬虫" scheme="http://smelond.com/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="requests" scheme="http://smelond.com/tags/requests/"/>
+    
+      <category term="beautifulsoup4" scheme="http://smelond.com/tags/beautifulsoup4/"/>
     
   </entry>
   
