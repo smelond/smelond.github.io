@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="smelond's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="金链API接口文档[TOC] 通用URL：  http://host:port/v1 一、生成新账户接口1、接口调用地址1GET /genkey 2、传入参数需要以GET方式传递以下参数：  无  3、输出数据输出内容及含义如下：  privkey ：账户私钥 address ：账户公钥/地址  二、查询账户信息接口1、接口调用地址1GET /accounts/&amp;#123;address&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="api金链">
+<meta property="og:url" content="http://smelond.com/2019/04/02/api金链/index.html">
+<meta property="og:site_name" content="smelond&#39;s Blog">
+<meta property="og:description" content="金链API接口文档[TOC] 通用URL：  http://host:port/v1 一、生成新账户接口1、接口调用地址1GET /genkey 2、传入参数需要以GET方式传递以下参数：  无  3、输出数据输出内容及含义如下：  privkey ：账户私钥 address ：账户公钥/地址  二、查询账户信息接口1、接口调用地址1GET /accounts/&amp;#123;address&amp;#125">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-02T02:39:57.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="api金链">
+<meta name="twitter:description" content="金链API接口文档[TOC] 通用URL：  http://host:port/v1 一、生成新账户接口1、接口调用地址1GET /genkey 2、传入参数需要以GET方式传递以下参数：  无  3、输出数据输出内容及含义如下：  privkey ：账户私钥 address ：账户公钥/地址  二、查询账户信息接口1、接口调用地址1GET /accounts/&amp;#123;address&amp;#125">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://smelond.com/2019/04/02/api金链/"/>
+
+
+
+
+
+  <title>api金链 | smelond's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?326f6a55c7fb470522fcb98f22260a79";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">smelond's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">安静</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://smelond.com/2019/04/02/api金链/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="smelond">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="smelond's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">api金链</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T10:39:40+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/02/api金链/" class="leancloud_visitors" data-flag-title="api金链">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="金链API接口文档"><a href="#金链API接口文档" class="headerlink" title="金链API接口文档"></a>金链API接口文档</h1><p>[TOC]</p>
+<p>通用URL：</p>
+<p> <a href="http://host:port/v1" target="_blank" rel="noopener">http://host:port/v1</a></p>
+<h2 id="一、生成新账户接口"><a href="#一、生成新账户接口" class="headerlink" title="一、生成新账户接口"></a>一、生成新账户接口</h2><h3 id="1、接口调用地址"><a href="#1、接口调用地址" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /genkey</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数"><a href="#2、传入参数" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li>无</li>
+</ul>
+<h3 id="3、输出数据"><a href="#3、输出数据" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>privkey</strong> ：账户私钥</li>
+<li><strong>address</strong> ：账户公钥/地址</li>
+</ul>
+<h2 id="二、查询账户信息接口"><a href="#二、查询账户信息接口" class="headerlink" title="二、查询账户信息接口"></a>二、查询账户信息接口</h2><h3 id="1、接口调用地址-1"><a href="#1、接口调用地址-1" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /accounts/&#123;address&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-1"><a href="#2、传入参数-1" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>address :</strong> 账户地址</li>
+</ul>
+<h3 id="3、输出数据-1"><a href="#3、输出数据-1" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出类型及其含义如下：</p>
+<p>返回结果</p>
+<ul>
+<li><strong>accountID：</strong> 账号ID</li>
+<li><strong>sequence：</strong> 当前账号提交序列</li>
+<li><strong>balance：</strong> 原生资产余额</li>
+<li><strong>subEntryNum：</strong> 实体数</li>
+<li><strong>inflationDest：</strong> 通胀地址</li>
+<li><strong>masterWeight：</strong> 当前账户主权重</li>
+<li><strong>flags：</strong> 标识属性值</li>
+<li><strong>thresholds：</strong> 操作权限阈值</li>
+<li><strong>signers：</strong> 签名者</li>
+<li><strong>trustLines：</strong> 信任类资产信息列表</li>
+<li><strong>data：</strong> 实体数据</li>
+</ul>
+<p>flags内容：</p>
+<ul>
+<li><strong>required：</strong> 需要发行地址进行授权</li>
+<li><strong>revocable：</strong> 允许发行地址撤销信用资产、冻结。</li>
+<li><strong>immutable：</strong> 表示账户永远无法删除</li>
+</ul>
+<p>thresholds内容：</p>
+<ul>
+<li><strong>lowThreshold：</strong> 低级安全阈值</li>
+<li><strong>medThreshold：</strong> 中级安全阈值</li>
+<li><strong>highThreshold：</strong> 高级安全阈值</li>
+<li><strong>masterWeight：</strong> 当前账户主权重</li>
+</ul>
+<p>signers内容：</p>
+<ul>
+<li><strong>signerAccount：</strong> 签名账户</li>
+<li><strong>weight：</strong> 权重</li>
+<li><strong>type：</strong> 预留</li>
+</ul>
+<p>trustLines内容：</p>
+<ul>
+<li><strong>type：</strong> 资产类型</li>
+<li><strong>code：</strong> 资产编码</li>
+<li><strong>issuer：</strong> 发行方</li>
+<li><strong>limit：</strong> 限额</li>
+<li><strong>balance：</strong> 余额</li>
+</ul>
+<h2 id="三、查询所有变更记录接口"><a href="#三、查询所有变更记录接口" class="headerlink" title="三、查询所有变更记录接口"></a>三、查询所有变更记录接口</h2><h3 id="1、接口调用地址-2"><a href="#1、接口调用地址-2" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /effects&#123;?cursor,limit,order,type\_i&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-2"><a href="#2、传入参数-2" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>time_begin：</strong> 起始时间，精确到纳秒</li>
+<li><strong>time_end：</strong> 结束时间，精确到纳秒</li>
+<li><strong>type_i：</strong> 参见【Effect类型】</li>
+</ul>
+<h3 id="3、输出数据-2"><a href="#3、输出数据-2" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出类型及其含义如下：</p>
+<ul>
+<li><strong>id :</strong> 流水号，用于分页</li>
+<li><strong>type_i：</strong> 操作类型代码，参见【Effect类型】</li>
+<li><strong>type：</strong> 操作类型，参见【Effect类型】</li>
+</ul>
+<h2 id="四、查询账户变更记录接口"><a href="#四、查询账户变更记录接口" class="headerlink" title="四、查询账户变更记录接口"></a>四、查询账户变更记录接口</h2><h3 id="1、接口调用地址-3"><a href="#1、接口调用地址-3" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /accounts/&#123;account&#125;/effects&#123;?cursor,limit,order,type\_i&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-3"><a href="#2、传入参数-3" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>time_begin：</strong> 起始时间，精确到纳秒</li>
+<li><strong>time_end：</strong> 结束时间，精确到纳秒</li>
+<li><strong>type_i：</strong> 参见 <strong>【</strong> Effect类型 <strong>】</strong></li>
+</ul>
+<h3 id="3、输出数据-3"><a href="#3、输出数据-3" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>id :</strong> 流水号，用于分页</li>
+<li><strong>type_i：</strong> 操作类型代码，参见【Effect类型】</li>
+<li><strong>type：</strong> 操作类型，参见【Effect类型】</li>
+<li><strong>create_at：</strong> 时间戳</li>
+</ul>
+<h2 id="五、查询交易变化记录接口"><a href="#五、查询交易变化记录接口" class="headerlink" title="五、查询交易变化记录接口"></a>五、查询交易变化记录接口</h2><h3 id="1、接口调用地址-4"><a href="#1、接口调用地址-4" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /transactions/&#123;txHash&#125;/effects&#123;?cursor,limit,order&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-4"><a href="#2、传入参数-4" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>time_begin：</strong> 起始时间，精确到纳秒</li>
+<li><strong>time_end：</strong> 结束时间，精确到纳秒</li>
+<li><strong>type_i：</strong> 参见 <strong>【</strong> Effect类型 <strong>】</strong></li>
+</ul>
+<h3 id="3、输出数据-4"><a href="#3、输出数据-4" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>id ：</strong>流水号</li>
+<li><strong>type_i ：</strong>操作类型代码</li>
+<li><strong>type ：</strong>操作类型</li>
+<li><strong>created_at ：</strong>时间戳</li>
+<li><strong>starting_balance ：</strong>开户余额</li>
+<li><strong>account ：</strong>账户</li>
+<li><strong>public_key ：</strong>公钥</li>
+<li><strong>weight ：</strong>权重</li>
+<li><strong>limit ：</strong>信任线限额</li>
+<li><strong>from ：</strong>发起账户</li>
+<li><strong>to ：</strong>目标账户</li>
+<li><strong>asset_type ：</strong>资产类型</li>
+<li><strong>asset_code ：</strong>资产码</li>
+<li><strong>asset_issuer ：</strong>资产发行方</li>
+<li><strong>amount ：</strong>交易额</li>
+<li><strong>seller ：</strong>卖方账号</li>
+<li><strong>offer_id ：</strong>挂单ID</li>
+<li><strong>sold_amount ：</strong>卖出交易额</li>
+<li><strong>sold_asset_type ：</strong>卖出资产类型</li>
+<li><strong>sold_asset_code ：</strong>卖出资产代码</li>
+<li><strong>sold_asset_issuer ：</strong>售卖资产发行方</li>
+<li><strong>bought_amount ：</strong>买入交易额</li>
+<li><strong>bought_asset_type ：</strong>买入资产类型</li>
+<li><strong>bought_asset_code ：</strong>买入资产代码</li>
+<li><strong>bought_asset_issuer ：</strong>买入资产发行方</li>
+<li><strong>has h：</strong>数据哈希</li>
+<li><strong>memo ：</strong>备注</li>
+</ul>
+<h2 id="六、查询所有账页信息接口"><a href="#六、查询所有账页信息接口" class="headerlink" title="六、查询所有账页信息接口"></a>六、查询所有账页信息接口</h2><h3 id="1、接口调用地址-5"><a href="#1、接口调用地址-5" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><p>GET /ledgers{?cursor,limit,order}</p>
+<h3 id="2、传入参数-5"><a href="#2、传入参数-5" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+</ul>
+<h3 id="3、输出数据-5"><a href="#3、输出数据-5" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>id ：</strong>账页ID</li>
+<li><strong>hash ：</strong>账页HASH</li>
+<li><strong>prev_hash ：</strong>前置账页HASH</li>
+<li><strong>sequence ：</strong>当前账页序列值</li>
+<li><strong>transaction_count ：</strong>交易数</li>
+<li><strong>operaction_count ：</strong>操作数</li>
+<li><strong>closed_at ：</strong>关账时间</li>
+<li><strong>total_coins ：</strong>资产总发行量</li>
+<li><strong>fee_pool ：</strong>手续费池</li>
+<li><strong>base_fee ：</strong>手续费</li>
+<li><strong>base_reserve ：</strong>保证金</li>
+<li><strong>max_tx_set_size ：</strong>账页最大交易数</li>
+</ul>
+<h2 id="七、查询指定账页信息接口"><a href="#七、查询指定账页信息接口" class="headerlink" title="七、查询指定账页信息接口"></a>七、查询指定账页信息接口</h2><h3 id="1、接口调用地址-6"><a href="#1、接口调用地址-6" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /ledgers/&#123;sequence&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-6"><a href="#2、传入参数-6" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>sequence ：</strong>当前账页序列值</li>
+</ul>
+<h3 id="3、输出数据-6"><a href="#3、输出数据-6" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义：</p>
+<ul>
+<li><strong>id ：</strong>账页ID</li>
+<li><strong>hash ：</strong>账页HASH</li>
+<li><strong>prev_hash ：</strong>前置账页HASH</li>
+<li><strong>sequence ：</strong>当前账页序列值</li>
+<li><strong>transaction_count ：</strong>交易数</li>
+<li><strong>operaction_count ：</strong>操作数</li>
+<li><strong>closed_at ：</strong>关账时间</li>
+<li><strong>total_coins ：</strong>资产总发行量</li>
+<li><strong>fee_pool ：</strong>手续费池</li>
+<li><strong>base_fee ：</strong>手续费</li>
+<li><strong>base_reserve ：</strong>保证金</li>
+<li><strong>max_tx_set_size ：</strong>账页最大交易数</li>
+</ul>
+<h2 id="八、查询所有操作记录接口"><a href="#八、查询所有操作记录接口" class="headerlink" title="八、查询所有操作记录接口"></a>八、查询所有操作记录接口</h2><h3 id="1、接口调用地址-7"><a href="#1、接口调用地址-7" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /actions&#123;?cursor,limit,order,type\_i&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-7"><a href="#2、传入参数-7" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>time_begin：</strong> 起始时间，精确到纳秒</li>
+<li><strong>time_end：</strong> 结束时间，精确到纳秒</li>
+<li><strong>type_i：</strong> 参见 <strong>【</strong> Effect类型 <strong>】</strong></li>
+</ul>
+<h3 id="3、输出数据-7"><a href="#3、输出数据-7" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>id：</strong> 流水号</li>
+<li><strong>type_i：</strong> 操作类型编码</li>
+<li><strong>type：</strong> 操作类型</li>
+<li><strong>created_at：</strong> 时间戳</li>
+</ul>
+<h2 id="九、查询账户操作记录接口"><a href="#九、查询账户操作记录接口" class="headerlink" title="九、查询账户操作记录接口"></a>九、查询账户操作记录接口</h2><h3 id="1、接口调用地址-8"><a href="#1、接口调用地址-8" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /accounts/&#123;account&#125;/actions&#123;?cursor,limit,order&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-8"><a href="#2、传入参数-8" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>type_i：</strong> 参见 <strong>【</strong> Effect类型 <strong>】</strong></li>
+</ul>
+<h3 id="3、输出数据-8"><a href="#3、输出数据-8" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>id ：</strong>流水号</li>
+<li><strong>type_i ：</strong>操作类型编码</li>
+<li><strong>type ：</strong>操作类型</li>
+<li><strong>created_at ：</strong>时间戳</li>
+</ul>
+<h2 id="十、查询交易操作记录接口"><a href="#十、查询交易操作记录接口" class="headerlink" title="十、查询交易操作记录接口"></a>十、查询交易操作记录接口</h2><h3 id="1、接口调用地址-9"><a href="#1、接口调用地址-9" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /transactions/&#123;txHash&#125;/actions&#123;?cursor,limit,order&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-9"><a href="#2、传入参数-9" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>type_i：</strong> 参见 <strong>【</strong> Effect类型 <strong>】</strong></li>
+</ul>
+<h3 id="3、输出数据-9"><a href="#3、输出数据-9" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>id ：</strong>流水号</li>
+<li><strong>type_i ：</strong>操作类型编码</li>
+<li><strong>type ：</strong>操作类型</li>
+<li><strong>created_at ：</strong>时间戳</li>
+<li><strong>source_account ：</strong>源账户</li>
+<li><strong>account ：</strong>账户</li>
+<li><strong>funder ：</strong>投资账户</li>
+<li><strong>starting_balance ：</strong>起始余额</li>
+<li><strong>from ：</strong>发起账户</li>
+<li><strong>to ：</strong>目标账户</li>
+<li><strong>asset_type ：</strong>资产类型</li>
+<li><strong>asset_code ：</strong>资产编码</li>
+<li><strong>asset_issuer ：</strong>资产发行方</li>
+<li><strong>amount ：</strong>交易额</li>
+<li><strong>name ：</strong>数据name</li>
+<li><strong>value ：</strong>数据value</li>
+<li><strong>hash ：</strong>数据哈希</li>
+<li><strong>memo ：</strong>备注</li>
+</ul>
+<h2 id="十一、查询所有转账接口"><a href="#十一、查询所有转账接口" class="headerlink" title="十一、查询所有转账接口"></a>十一、查询所有转账接口</h2><h3 id="1、接口调用地址-10"><a href="#1、接口调用地址-10" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /payments&#123;?cursor,limit,order,type\_i&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-10"><a href="#2、传入参数-10" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>type_i：</strong> 参见 <strong>【</strong> Effect类型 <strong>】</strong></li>
+</ul>
+<h3 id="3、输出数据-10"><a href="#3、输出数据-10" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>id ：</strong>流水号</li>
+<li><strong>type_i ：</strong>操作类型编码</li>
+<li><strong>type ：</strong>操作类型</li>
+<li><strong>created_at ：</strong>时间戳</li>
+</ul>
+<h2 id="十二、查询指定账户转账记录接口"><a href="#十二、查询指定账户转账记录接口" class="headerlink" title="十二、查询指定账户转账记录接口"></a>十二、查询指定账户转账记录接口</h2><h3 id="1、接口调用地址-11"><a href="#1、接口调用地址-11" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /accounts/&#123;id&#125;/payments&#123;?cursor,limit,order,type\_i&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-11"><a href="#2、传入参数-11" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>id：</strong> 账户ID</li>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>type_i：</strong> 参见 <strong>【</strong> Effect类型 <strong>】</strong></li>
+</ul>
+<h3 id="3、输出数据-11"><a href="#3、输出数据-11" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>id ：</strong>流水号</li>
+<li><strong>type_i ：</strong>操作类型编码</li>
+<li><strong>type ：</strong>操作类型</li>
+<li><strong>created_at ：</strong>时间戳</li>
+</ul>
+<h2 id="十三、查询指定交易转账记录接口"><a href="#十三、查询指定交易转账记录接口" class="headerlink" title="十三、查询指定交易转账记录接口"></a>十三、查询指定交易转账记录接口</h2><h3 id="1、接口调用地址-12"><a href="#1、接口调用地址-12" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /transactions/&#123;txHash&#125;/payments&#123;?cursor,limit,order&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-12"><a href="#2、传入参数-12" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置1</li>
+<li><strong>txHash：</strong> 交易hash</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>type_i：</strong> 参见 <strong>【</strong> Effect类型 <strong>】</strong></li>
+</ul>
+<h3 id="3、输出数据-12"><a href="#3、输出数据-12" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出的内容及含义如下：</p>
+<ul>
+<li><strong>id ：</strong>流水号</li>
+<li><strong>type_i ：</strong>操作类型编码</li>
+<li><strong>type ：</strong>操作类型</li>
+<li><strong>created_at ：</strong>交易时间</li>
+<li><strong>source_account ：</strong>源账户</li>
+<li><strong>account ：</strong>账户</li>
+<li><strong>funder ：</strong>投资账户</li>
+<li><strong>starting_balance ：</strong>起始余额</li>
+<li><strong>from ：</strong>发起账户</li>
+<li><strong>to ：</strong>目标账户</li>
+<li><strong>asset_type ：</strong>资产类型</li>
+<li><strong>asset_code ：</strong>资产编码</li>
+<li><strong>asset_issuer ：</strong>资产发行方</li>
+<li><strong>amount ：</strong>交易额</li>
+<li><strong>create_at：</strong> 时间戳</li>
+</ul>
+<h2 id="十四、查询所有交易信息接口"><a href="#十四、查询所有交易信息接口" class="headerlink" title="十四、查询所有交易信息接口"></a>十四、查询所有交易信息接口</h2><h3 id="1、接口调用地址-13"><a href="#1、接口调用地址-13" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /transactions&#123;?cursor,limit,order&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-13"><a href="#2、传入参数-13" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+</ul>
+<h3 id="3、输出数据-13"><a href="#3、输出数据-13" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>txid ：</strong>交易ID</li>
+<li><strong>account ：</strong>账户</li>
+<li><strong>account_sequence ：</strong>当前账户序列号</li>
+<li><strong>action_count ：</strong>操作数</li>
+<li><strong>created_at ：</strong>时间戳</li>
+<li><strong>fee_paid ：</strong>支付费用</li>
+<li><strong>hash ：</strong>交易HASH</li>
+<li><strong>ledger ：</strong>账页编号</li>
+<li><strong>memo ：</strong>备注</li>
+<li><strong>result_code ：</strong>返回码</li>
+<li><strong>result_code_s ：</strong>返回字符串</li>
+</ul>
+<h2 id="十五、查询指定交易信息接口"><a href="#十五、查询指定交易信息接口" class="headerlink" title="十五、查询指定交易信息接口"></a>十五、查询指定交易信息接口</h2><h3 id="1、接口调用地址-14"><a href="#1、接口调用地址-14" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /transactions/&#123;txHash&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-14"><a href="#2、传入参数-14" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>txHash：</strong> 交易哈希</li>
+</ul>
+<h3 id="3、输出数据-14"><a href="#3、输出数据-14" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>txid ： 交易ID</strong></li>
+<li><strong>account ：</strong>账户</li>
+<li><strong>account_sequence ：</strong>当前账户序列号</li>
+<li><strong>action_count ：</strong>操作数</li>
+<li><strong>created_at ：</strong>时间戳</li>
+<li><strong>fee_paid ：</strong>支付费用</li>
+<li><strong>hash ：</strong>交易HASH</li>
+<li><strong>ledger ：</strong>账页编号</li>
+<li><strong>memo ：</strong>备注</li>
+<li><strong>result_code ：</strong>返回码</li>
+<li><strong>result_code_s ：</strong>返回字符串</li>
+</ul>
+<h2 id="十六、查询指定账户交易信息接口"><a href="#十六、查询指定账户交易信息接口" class="headerlink" title="十六、查询指定账户交易信息接口"></a>十六、查询指定账户交易信息接口</h2><h3 id="1、接口调用地址-15"><a href="#1、接口调用地址-15" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /accounts/&#123;account\_id&#125;/transactions&#123;?cursor,limit,order&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-15"><a href="#2、传入参数-15" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以GET方式传递以下参数：</p>
+<ul>
+<li><strong>cursor:</strong> 游标，用于指定查询&quot;起点&quot;，首次查询可以置0</li>
+<li><strong>limit：</strong> 限行数，默认10，最大200</li>
+<li><strong>order：</strong> 排序，默认desc；asc或者desc</li>
+<li><strong>account_id:</strong> 账户id</li>
+</ul>
+<h3 id="3、输出数据-15"><a href="#3、输出数据-15" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>txid ： 交易ID</strong></li>
+<li><strong>account ：</strong>账户</li>
+<li><strong>account_sequence ：</strong>当前账户序列号</li>
+<li><strong>action_count ：</strong>操作数</li>
+<li><strong>created_at ：</strong>时间戳</li>
+<li><strong>fee_paid ：</strong>支付费用</li>
+<li><strong>hash ：</strong>交易HASH</li>
+<li><strong>ledger ：</strong>账页编号</li>
+<li><strong>memo ：</strong>备注</li>
+<li><strong>result_code ：</strong>返回码</li>
+<li><strong>result_code_s ：</strong>返回字符串</li>
+</ul>
+<h2 id="十七、交易接口"><a href="#十七、交易接口" class="headerlink" title="十七、交易接口"></a>十七、交易接口</h2><h3 id="1、接口调用地址-16"><a href="#1、接口调用地址-16" class="headerlink" title="1、接口调用地址"></a>1、接口调用地址</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /transactions</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-16"><a href="#2、传入参数-16" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要以POST方式传递以下参数：</p>
+<ul>
+<li><strong>basefee ：</strong>基础交易费</li>
+<li><strong>memo ：</strong>交易备注</li>
+<li><strong>lowertime ：</strong>交易时效下限</li>
+<li><strong>uppertime ：</strong>交易时效上限</li>
+<li><strong>privkey ：</strong>私钥</li>
+<li><strong>operations ：</strong>操作对象组</li>
+</ul>
+<h3 id="3、输出数据-16"><a href="#3、输出数据-16" class="headerlink" title="3、输出数据"></a>3、输出数据</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>isSuccess ：</strong>是否成功</li>
+<li><strong>message ：</strong>返回错误信息</li>
+<li><strong>result ：</strong>返回数据</li>
+<li><strong>tx ：</strong>交易指纹</li>
+<li><strong>hash ：</strong>上传数据指纹</li>
+<li><strong>res ：</strong>预留</li>
+</ul>
+<h2 id="十八、创建账户接口"><a href="#十八、创建账户接口" class="headerlink" title="十八、创建账户接口"></a>十八、创建账户接口</h2><h3 id="1、调用方式"><a href="#1、调用方式" class="headerlink" title="1、调用方式"></a>1、调用方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /transactions</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-17"><a href="#2、传入参数-17" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要通过URL的POST方式传递以下参数：</p>
+<ul>
+<li><strong>optype：</strong> 操作类型</li>
+<li><strong>source：</strong> 源账户</li>
+<li><strong>destination：</strong> 账号地址</li>
+<li><strong>startingBalance：</strong> 初始余额</li>
+</ul>
+<h3 id="3、输出格式"><a href="#3、输出格式" class="headerlink" title="3、输出格式"></a>3、输出格式</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>isSuccess：</strong> 是否成功</li>
+<li><strong>res：</strong> 预留</li>
+<li><strong>tx：</strong> 交易指纹</li>
+</ul>
+<h3 id="4、POST报文"><a href="#4、POST报文" class="headerlink" title="4、POST报文"></a>4、POST报文</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"basefee"</span>: <span class="string">"0"</span>,</span><br><span class="line">	<span class="attr">"memo"</span>: <span class="string">"create account"</span>,</span><br><span class="line">	<span class="attr">"lowertime"</span>: <span class="number">0</span>,</span><br><span class="line">	<span class="attr">"uppertime"</span>: <span class="number">1607536123737411000</span>,</span><br><span class="line">	<span class="attr">"privkey"</span>: [</span><br><span class="line"><span class="string">"a8971729fbc199fb3459529cebcd8704791fc699d88ac89284f23ff8e7fca7d6"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"operations"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"optype"</span>: <span class="string">"create_account"</span>,</span><br><span class="line">			<span class="attr">"source"</span>: <span class="string">"0x02865c395bfd104394b786a264662d02177897391aba1155f854cb1065b6a444e5"</span>,</span><br><span class="line">			<span class="attr">"destination"</span>: <span class="string">"03be7af03426ecbd05f3af6d3d1599fa36f872ebd51bd2605cca2aacf78bee4266"</span>,</span><br><span class="line">			<span class="attr">"startingBalance"</span>:<span class="string">"0"</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="十九、支付、转账接口"><a href="#十九、支付、转账接口" class="headerlink" title="十九、支付、转账接口"></a>十九、支付、转账接口</h2><h3 id="1、调用方式-1"><a href="#1、调用方式-1" class="headerlink" title="1、调用方式"></a>1、调用方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /transactions</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-18"><a href="#2、传入参数-18" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要通过URL的POST方式传递以下参数：</p>
+<ul>
+<li><strong>optype：</strong> 操作类型</li>
+<li><strong>source：</strong> 源账户</li>
+<li><strong>destination：</strong> 账号地址</li>
+<li><strong>asset：</strong> 资产对象</li>
+<li><strong>amount：</strong> 卖出资产数量</li>
+</ul>
+<h3 id="3、输出格式-1"><a href="#3、输出格式-1" class="headerlink" title="3、输出格式"></a>3、输出格式</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>type：</strong> 资产编码</li>
+<li><strong>issuer：</strong> 资产发行方</li>
+<li><strong>code：</strong> 资产编码</li>
+</ul>
+<h3 id="4、POST报文-1"><a href="#4、POST报文-1" class="headerlink" title="4、POST报文"></a>4、POST报文</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"basefee"</span>: <span class="string">"0"</span>,</span><br><span class="line">	<span class="attr">"privkey"</span>: [</span><br><span class="line">		<span class="string">"a8971729fbc199fb3459529cebcd8704791fc699d88ac89284f23ff8e7fca7d6"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"operations"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"optype"</span>: <span class="string">"payment"</span>,</span><br><span class="line">			<span class="attr">"source"</span>: <span class="string">"02865c395bfd104394b786a264662d02177897391aba1155f854cb1065b6a444e5"</span>,</span><br><span class="line">			<span class="attr">"destination"</span>: <span class="string">"027301b2bcc81af18afb241b28e37fc6954c985bdf9972d4568d411f59a3740491"</span>,</span><br><span class="line">			<span class="attr">"asset"</span>: &#123;</span><br><span class="line">				<span class="attr">"type"</span>: <span class="number">0</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">"amount"</span>: <span class="string">"0"</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二十、添加信任线接口"><a href="#二十、添加信任线接口" class="headerlink" title="二十、添加信任线接口"></a>二十、添加信任线接口</h2><h3 id="1、调用方式-2"><a href="#1、调用方式-2" class="headerlink" title="1、调用方式"></a>1、调用方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /transactions</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-19"><a href="#2、传入参数-19" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要通过URL的POST方式传递以下参数：</p>
+<ul>
+<li><strong>optype：</strong> 操作类型</li>
+<li><strong>source：</strong> 源账户</li>
+<li><strong>asset：</strong> 信任资产</li>
+<li><strong>limit：</strong> 资产持有限额</li>
+<li><strong>type：</strong> 资产类型</li>
+<li><strong>issuer：</strong> 资产发行方</li>
+<li><strong>code：</strong> 资产编码</li>
+</ul>
+<h3 id="3、输出格式-2"><a href="#3、输出格式-2" class="headerlink" title="3、输出格式"></a>3、输出格式</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>isSuccess：</strong> 是否成功</li>
+<li><strong>result：</strong> 返回数据</li>
+<li><strong>tx：</strong> 交易指纹</li>
+<li><strong>res：</strong> 预留</li>
+</ul>
+<h3 id="4、POST报文-2"><a href="#4、POST报文-2" class="headerlink" title="4、POST报文"></a>4、POST报文</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"basefee"</span>: <span class="string">"0"</span>,</span><br><span class="line">	<span class="attr">"privkey"</span>: [</span><br><span class="line">		<span class="string">"2e3bcaa3187ec2c175cb3a29df70c56858c09356f5f46cef218a54bbf450b115"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"operations"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"optype"</span>: <span class="string">"change_trust"</span>,</span><br><span class="line">			<span class="attr">"source"</span>: <span class="string">"03d16b1c203466d4eacfdea8d7e9db9003e588df4512ab86c19d7d94a336b4481b"</span>,</span><br><span class="line">			<span class="attr">"asset"</span>: &#123;</span><br><span class="line">				<span class="attr">"issuer"</span>: <span class="string">"0244bdb5695cbff614b04062f874a432b82e99027550dd7e7776b70e8746f52414"</span>,</span><br><span class="line">				<span class="attr">"type"</span>: <span class="number">1</span>,</span><br><span class="line">				<span class="attr">"code"</span>: <span class="string">"BTC"</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">"limit"</span>: <span class="string">"1000"</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二十一、授权信任线接口"><a href="#二十一、授权信任线接口" class="headerlink" title="二十一、授权信任线接口"></a>二十一、授权信任线接口</h2><h3 id="1、调用方式-3"><a href="#1、调用方式-3" class="headerlink" title="1、调用方式"></a>1、调用方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /transactions</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-20"><a href="#2、传入参数-20" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要通过URL的POST方式传递以下参数：</p>
+<ul>
+<li><strong>optype：</strong> 操作类型</li>
+<li><strong>source：</strong> 源账号</li>
+<li><strong>trustor：</strong> 申请的账号</li>
+<li><strong>asset：</strong> 资产</li>
+<li><strong>authorize：</strong> 是否授权</li>
+<li><strong>type：</strong> 资产类型</li>
+<li><strong>issuer：</strong> 资产发行</li>
+<li><strong>code：</strong> 资产编码</li>
+</ul>
+<h3 id="3、输出格式-3"><a href="#3、输出格式-3" class="headerlink" title="3、输出格式"></a>3、输出格式</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>isSuccess：</strong> 是否成功</li>
+<li><strong>result：</strong> 返回数据</li>
+<li><strong>tx：</strong> 交易指纹</li>
+<li><strong>res：</strong> 预留</li>
+</ul>
+<h3 id="4、POST报文-3"><a href="#4、POST报文-3" class="headerlink" title="4、POST报文"></a>4、POST报文</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"basefee"</span>: <span class="string">"0"</span>,</span><br><span class="line">	<span class="attr">"privkey"</span>: [</span><br><span class="line">		<span class="string">"cce3de7f481cb23582cadcb387987c73f09711db83bba34373b742bd917143b0"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"operations"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"optype"</span>: <span class="string">"allow_trust"</span>,</span><br><span class="line">			<span class="attr">"source"</span>: <span class="string">"0244bdb5695cbff614b04062f874a432b82e99027550dd7e7776b70e8746f52414"</span>,</span><br><span class="line">			<span class="attr">"trustor"</span>: <span class="string">"0247551fbdaab785eba4245bbae0312dfc338c0eb33d0834353b812e4897ab7ad7"</span>,</span><br><span class="line">			<span class="attr">"asset"</span>: &#123;</span><br><span class="line">				<span class="attr">"issuer"</span>: <span class="string">"0244bdb5695cbff614b04062f874a432b82e99027550dd7e7776b70e8746f52414"</span>,</span><br><span class="line">				<span class="attr">"type"</span>: <span class="number">1</span>,</span><br><span class="line">				<span class="attr">"code"</span>: <span class="string">"BTC"</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">"authorize"</span>: <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二十二、设置属性和权限接口"><a href="#二十二、设置属性和权限接口" class="headerlink" title="二十二、设置属性和权限接口"></a>二十二、设置属性和权限接口</h2><h3 id="1、调用方式-4"><a href="#1、调用方式-4" class="headerlink" title="1、调用方式"></a>1、调用方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /transactions</span><br></pre></td></tr></table></figure>
+<h3 id="2、传入参数-21"><a href="#2、传入参数-21" class="headerlink" title="2、传入参数"></a>2、传入参数</h3><p>需要通过URL的POST方式传递以下参数：</p>
+<ul>
+<li><strong>optype：</strong> 操作类型</li>
+<li><strong>source：</strong> 源账户</li>
+<li><strong>inflationDest：</strong> 通货膨胀地址</li>
+<li><strong>setFlags：</strong> 信任处理标记《参考二十四》</li>
+<li><strong>masterWeight：</strong> 当前账户的签名权重</li>
+<li><strong>lowThreshold：</strong> 低级安全阈值</li>
+<li><strong>medThreshold：</strong> 中级安全阈值</li>
+<li><strong>highThreshold：</strong> 高级安全阈值</li>
+<li><strong>signer：</strong> 签名者</li>
+<li><strong>signerAccount：</strong> 签名账户</li>
+<li><strong>weight：</strong> 签名账户权重</li>
+<li><strong>type：</strong> 签名类型</li>
+</ul>
+<h3 id="3、输出格式-4"><a href="#3、输出格式-4" class="headerlink" title="3、输出格式"></a>3、输出格式</h3><p>输出内容及含义如下：</p>
+<ul>
+<li><strong>isSuccess：</strong> 是否成功</li>
+<li><strong>message：</strong> 提示信息</li>
+</ul>
+<h3 id="4、POST报文-4"><a href="#4、POST报文-4" class="headerlink" title="4、POST报文"></a>4、POST报文</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"basefee"</span>: <span class="string">"0"</span>,</span><br><span class="line">	<span class="attr">"privkey"</span>: [</span><br><span class="line">		<span class="string">"0829e79eb9c1f7db6e5c605049ffac57880bfdc8c392b604c19dd418d29cfb7c"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"operations"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"optype"</span>: <span class="string">"set_option"</span>,</span><br><span class="line">			<span class="attr">"source"</span>: <span class="string">"02a7adfc3b3160a5df86885d51c37416fca43d52e69c88f53f7a013e9d44ddcf95"</span>,</span><br><span class="line">			<span class="attr">"masterWeight"</span>: <span class="number">200</span>,</span><br><span class="line">			<span class="attr">"lowThreshold"</span>: <span class="number">10</span>,</span><br><span class="line">			<span class="attr">"medThreshold"</span>: <span class="number">50</span>,</span><br><span class="line">			<span class="attr">"highThreshold"</span>: <span class="number">100</span>,</span><br><span class="line">			<span class="attr">"signer"</span>: &#123;</span><br><span class="line">				<span class="attr">"signerAccount"</span>: <span class="string">"02276ad37c4dee1a11961b87554f095588f1940f2c583b721af3dbd78c2eb865ab"</span>,</span><br><span class="line">				<span class="attr">"weight"</span>: <span class="number">20</span>,</span><br><span class="line">				<span class="attr">"type"</span>: <span class="string">"25519"</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">"setFlags"</span>: <span class="number">3</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二十三、Account参数"><a href="#二十三、Account参数" class="headerlink" title="二十三、Account参数"></a>二十三、Account参数</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accountID</td>
+<td>与address同义</td>
+<td></td>
+<td>为金链的address；即：账户公钥，账户地址</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>金链原生资产余额</td>
+<td></td>
+<td>XDE余额；准确讲，以金为单位的余额信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>账户实体属性、数据集合</td>
+<td></td>
+<td>由name与value组成的对象集合</td>
+</tr>
+<tr>
+<td>subEntryNum</td>
+<td>number of subentries</td>
+<td></td>
+<td>当前账户拥有的entry数量，这个数量用于计算一个账户的最小可用余额。entry类型：Signer、Trustline、Data</td>
+</tr>
+<tr>
+<td>Thresholds</td>
+<td>操作安全阈值</td>
+<td></td>
+<td>每种操作类型对应的安全阈值；定义为&quot;highThreshold&quot;,   &quot;lowThreshold&quot;,  &quot;medThreshold&quot;，masterWeight为当前账户权重，用于多签名。</td>
+</tr>
+<tr>
+<td>signers</td>
+<td>签名账户列表</td>
+<td></td>
+<td>给当前账户附加的签名账户；用于多签名</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>账户标记</td>
+<td></td>
+<td>有三个Flag，用于标识资产发行地址。（1）<code>Authorization required (1)</code>即需要授权访问。即：使用这个发行地址前，需要发行地址进行授权；（2）<code>Authorization revocable (2)</code>即可以撤销的。即：允许发行地址撤销信用资产，并冻结；（3）<code>Authorization immutable (4)</code>即不可修改的（设置后就无法修改了）。即：设置此标记，表示不能再设置任何authorization flags。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二十四、Actions对应的安全级别"><a href="#二十四、Actions对应的安全级别" class="headerlink" title="二十四、Actions对应的安全级别"></a>二十四、Actions对应的安全级别</h2><table>
+<thead>
+<tr>
+<th>操作名称</th>
+<th>高安全性</th>
+<th>中安全性</th>
+<th>低安全性</th>
+<th>type_i取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create_account</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>取值：1</td>
+</tr>
+<tr>
+<td>payment</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>取值：2</td>
+</tr>
+<tr>
+<td>set_option</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td>取值：6</td>
+</tr>
+<tr>
+<td>change_trust</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>取值：7</td>
+</tr>
+<tr>
+<td>allow_trust</td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>取值：8</td>
+</tr>
+<tr>
+<td>manage_data</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>取值：10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二十五、Effect类型"><a href="#二十五、Effect类型" class="headerlink" title="二十五、Effect类型"></a>二十五、Effect类型</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>typei取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account_created</td>
+<td>0</td>
+<td>create_account</td>
+</tr>
+<tr>
+<td>account_removed</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>account_credited</td>
+<td>2</td>
+<td>payment</td>
+</tr>
+<tr>
+<td>account_debited</td>
+<td>3</td>
+<td>payment</td>
+</tr>
+<tr>
+<td>account_thresholdsupdated</td>
+<td>4</td>
+<td>set_options</td>
+</tr>
+<tr>
+<td>account_homedomainupdated</td>
+<td>5</td>
+<td>set_options</td>
+</tr>
+<tr>
+<td>account_flagsupdated</td>
+<td>6</td>
+<td>set_options</td>
+</tr>
+<tr>
+<td>signer_created</td>
+<td>7</td>
+<td>set_options</td>
+</tr>
+<tr>
+<td>signer_removed</td>
+<td>8</td>
+<td>set_options</td>
+</tr>
+<tr>
+<td>signer_updated</td>
+<td>9</td>
+<td>set_options</td>
+</tr>
+<tr>
+<td>trustline_created</td>
+<td>10</td>
+<td>change_trust</td>
+</tr>
+<tr>
+<td>trustline_removed</td>
+<td>11</td>
+<td>change_trust</td>
+</tr>
+<tr>
+<td>trustline_updated</td>
+<td>12</td>
+<td>change_trust</td>
+</tr>
+<tr>
+<td>trustline_authorized</td>
+<td>13</td>
+<td>change_trust, allow_trust</td>
+</tr>
+<tr>
+<td>trustline_deauthorized</td>
+<td>14</td>
+<td>change_trust, allow_trust</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二十六、Asset-Type–资产类型"><a href="#二十六、Asset-Type–资产类型" class="headerlink" title="二十六、Asset Type–资产类型"></a>二十六、Asset Type–资产类型</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>native</td>
+<td>取值：0</td>
+<td>原生资产，指代XDE，或金</td>
+</tr>
+<tr>
+<td>alphaNumber4</td>
+<td>取值：1</td>
+<td>长度为1~4 位的资产代码</td>
+</tr>
+<tr>
+<td>alphaNumber12</td>
+<td>取值：2</td>
+<td>长度为5~12 位的资产代码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二十七、Ledger参数Ledger-Header"><a href="#二十七、Ledger参数Ledger-Header" class="headerlink" title="二十七、Ledger参数Ledger Header"></a>二十七、Ledger参数Ledger Header</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td>版本号</td>
+<td></td>
+<td>uint32</td>
+<td>账页协议版本</td>
+</tr>
+<tr>
+<td>Previous Ledger Hash</td>
+<td>前一个账页Hash</td>
+<td></td>
+<td></td>
+<td>前一个账页Hash</td>
+</tr>
+<tr>
+<td>Transaction set result hash</td>
+<td>事务集Hash</td>
+<td></td>
+<td></td>
+<td>Hash of the results of applying the transaction set. This data is not, strictly speaking, necessary for validating the results of the transactions. However, this data makes it easier for entities to validate the result of a given transaction without having to apply the transaction set to the previous ledger.</td>
+</tr>
+<tr>
+<td>Bucket list hash</td>
+<td></td>
+<td></td>
+<td></td>
+<td>账页中所有对象的Hash，数据结构为bucket list</td>
+</tr>
+<tr>
+<td>Ledger sequence</td>
+<td>账页序列号</td>
+<td></td>
+<td></td>
+<td>账页序列号</td>
+</tr>
+<tr>
+<td>Fee pool</td>
+<td>费用池</td>
+<td></td>
+<td></td>
+<td>已经支付费用的XDE数量，这个数字将加到通货膨胀池，下一次通货膨胀运行时将设置为0，注意单位是XDE。</td>
+</tr>
+<tr>
+<td>Inflation sequence</td>
+<td>通货膨胀序列号</td>
+<td></td>
+<td></td>
+<td>已经运行的通货膨胀的次数。</td>
+</tr>
+<tr>
+<td>ID pool</td>
+<td>ID池</td>
+<td></td>
+<td></td>
+<td>最后使用的全局ID，这些ID用于生成对象。</td>
+</tr>
+<tr>
+<td>Maximum Number of Transactions</td>
+<td>事务最大数</td>
+<td></td>
+<td></td>
+<td>验证器能够验证的最大交易数量，如果超过数量，则验证器将包括费用最高的事务。</td>
+</tr>
+<tr>
+<td>Base Fee</td>
+<td>基础费用</td>
+<td></td>
+<td></td>
+<td>每个操作的基础费用，单位是XDE</td>
+</tr>
+<tr>
+<td>Base reserve</td>
+<td>基础保证金</td>
+<td></td>
+<td></td>
+<td>基础保证金</td>
+</tr>
+<tr>
+<td>Skip list</td>
+<td></td>
+<td></td>
+<td></td>
+<td>之前的账页Hash，能跳到之前的账页，不用one by one，有四个Hash值存储，存储模50 5000 50000 or 500000四个，具体的值是skipList[0] mod(50), skipList[1] mod(5000), 以此类推。</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/04/02/api金链/">api金链</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 smelond 的个人博客">smelond</a></p>
+  <p><span>发布时间:</span>2019年04月02日 - 10:04</p>
+  <p><span>最后更新:</span>2019年04月02日 - 10:04</p>
+  <p><span>原始链接:</span><a href="/2019/04/02/api金链/" title="api金链">http://smelond.com/2019/04/02/api金链/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://smelond.com/2019/04/02/api金链/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+	
+	
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/16/python爬虫-笔记记录二/" rel="next" title="python爬虫[笔记记录二]">
+                <i class="fa fa-chevron-left"></i> python爬虫[笔记记录二]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+      <!--MOB SHARE BEGIN-->
+<div class="-mob-share-ui-button -mob-share-open">分享</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+		<li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=2501104178e4c"></script>
+<!--MOB SHARE END-->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTEzOC8xMTY3Mw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="smelond" />
+            
+              <p class="site-author-name" itemprop="name">smelond</p>
+              <p class="site-description motion-element" itemprop="description">安静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/smelond" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-globe"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-bookmark-o"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.whiteblog.club/" title="White" target="_blank">White</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tateliao.me" title="吃馒头的猫" target="_blank">吃馒头的猫</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hoime.cn" title="French" target="_blank">French</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/smelond" title="博客园" target="_blank">博客园</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#金链API接口文档"><span class="nav-number">1.</span> <span class="nav-text">金链API接口文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、生成新账户接口"><span class="nav-number">1.1.</span> <span class="nav-text">一、生成新账户接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、查询账户信息接口"><span class="nav-number">1.2.</span> <span class="nav-text">二、查询账户信息接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、查询所有变更记录接口"><span class="nav-number">1.3.</span> <span class="nav-text">三、查询所有变更记录接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、查询账户变更记录接口"><span class="nav-number">1.4.</span> <span class="nav-text">四、查询账户变更记录接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-3"><span class="nav-number">1.4.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、查询交易变化记录接口"><span class="nav-number">1.5.</span> <span class="nav-text">五、查询交易变化记录接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-4"><span class="nav-number">1.5.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-4"><span class="nav-number">1.5.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、查询所有账页信息接口"><span class="nav-number">1.6.</span> <span class="nav-text">六、查询所有账页信息接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-5"><span class="nav-number">1.6.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-5"><span class="nav-number">1.6.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-5"><span class="nav-number">1.6.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、查询指定账页信息接口"><span class="nav-number">1.7.</span> <span class="nav-text">七、查询指定账页信息接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-6"><span class="nav-number">1.7.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-6"><span class="nav-number">1.7.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-6"><span class="nav-number">1.7.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、查询所有操作记录接口"><span class="nav-number">1.8.</span> <span class="nav-text">八、查询所有操作记录接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-7"><span class="nav-number">1.8.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-7"><span class="nav-number">1.8.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-7"><span class="nav-number">1.8.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、查询账户操作记录接口"><span class="nav-number">1.9.</span> <span class="nav-text">九、查询账户操作记录接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-8"><span class="nav-number">1.9.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-8"><span class="nav-number">1.9.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-8"><span class="nav-number">1.9.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、查询交易操作记录接口"><span class="nav-number">1.10.</span> <span class="nav-text">十、查询交易操作记录接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-9"><span class="nav-number">1.10.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-9"><span class="nav-number">1.10.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-9"><span class="nav-number">1.10.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十一、查询所有转账接口"><span class="nav-number">1.11.</span> <span class="nav-text">十一、查询所有转账接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-10"><span class="nav-number">1.11.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-10"><span class="nav-number">1.11.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-10"><span class="nav-number">1.11.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十二、查询指定账户转账记录接口"><span class="nav-number">1.12.</span> <span class="nav-text">十二、查询指定账户转账记录接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-11"><span class="nav-number">1.12.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-11"><span class="nav-number">1.12.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-11"><span class="nav-number">1.12.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十三、查询指定交易转账记录接口"><span class="nav-number">1.13.</span> <span class="nav-text">十三、查询指定交易转账记录接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-12"><span class="nav-number">1.13.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-12"><span class="nav-number">1.13.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-12"><span class="nav-number">1.13.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十四、查询所有交易信息接口"><span class="nav-number">1.14.</span> <span class="nav-text">十四、查询所有交易信息接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-13"><span class="nav-number">1.14.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-13"><span class="nav-number">1.14.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-13"><span class="nav-number">1.14.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十五、查询指定交易信息接口"><span class="nav-number">1.15.</span> <span class="nav-text">十五、查询指定交易信息接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-14"><span class="nav-number">1.15.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-14"><span class="nav-number">1.15.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-14"><span class="nav-number">1.15.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十六、查询指定账户交易信息接口"><span class="nav-number">1.16.</span> <span class="nav-text">十六、查询指定账户交易信息接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-15"><span class="nav-number">1.16.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-15"><span class="nav-number">1.16.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-15"><span class="nav-number">1.16.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十七、交易接口"><span class="nav-number">1.17.</span> <span class="nav-text">十七、交易接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、接口调用地址-16"><span class="nav-number">1.17.1.</span> <span class="nav-text">1、接口调用地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-16"><span class="nav-number">1.17.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出数据-16"><span class="nav-number">1.17.3.</span> <span class="nav-text">3、输出数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十八、创建账户接口"><span class="nav-number">1.18.</span> <span class="nav-text">十八、创建账户接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、调用方式"><span class="nav-number">1.18.1.</span> <span class="nav-text">1、调用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-17"><span class="nav-number">1.18.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出格式"><span class="nav-number">1.18.3.</span> <span class="nav-text">3、输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、POST报文"><span class="nav-number">1.18.4.</span> <span class="nav-text">4、POST报文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十九、支付、转账接口"><span class="nav-number">1.19.</span> <span class="nav-text">十九、支付、转账接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、调用方式-1"><span class="nav-number">1.19.1.</span> <span class="nav-text">1、调用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-18"><span class="nav-number">1.19.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出格式-1"><span class="nav-number">1.19.3.</span> <span class="nav-text">3、输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、POST报文-1"><span class="nav-number">1.19.4.</span> <span class="nav-text">4、POST报文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十、添加信任线接口"><span class="nav-number">1.20.</span> <span class="nav-text">二十、添加信任线接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、调用方式-2"><span class="nav-number">1.20.1.</span> <span class="nav-text">1、调用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-19"><span class="nav-number">1.20.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出格式-2"><span class="nav-number">1.20.3.</span> <span class="nav-text">3、输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、POST报文-2"><span class="nav-number">1.20.4.</span> <span class="nav-text">4、POST报文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十一、授权信任线接口"><span class="nav-number">1.21.</span> <span class="nav-text">二十一、授权信任线接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、调用方式-3"><span class="nav-number">1.21.1.</span> <span class="nav-text">1、调用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-20"><span class="nav-number">1.21.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出格式-3"><span class="nav-number">1.21.3.</span> <span class="nav-text">3、输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、POST报文-3"><span class="nav-number">1.21.4.</span> <span class="nav-text">4、POST报文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十二、设置属性和权限接口"><span class="nav-number">1.22.</span> <span class="nav-text">二十二、设置属性和权限接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、调用方式-4"><span class="nav-number">1.22.1.</span> <span class="nav-text">1、调用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、传入参数-21"><span class="nav-number">1.22.2.</span> <span class="nav-text">2、传入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、输出格式-4"><span class="nav-number">1.22.3.</span> <span class="nav-text">3、输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、POST报文-4"><span class="nav-number">1.22.4.</span> <span class="nav-text">4、POST报文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十三、Account参数"><span class="nav-number">1.23.</span> <span class="nav-text">二十三、Account参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十四、Actions对应的安全级别"><span class="nav-number">1.24.</span> <span class="nav-text">二十四、Actions对应的安全级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十五、Effect类型"><span class="nav-number">1.25.</span> <span class="nav-text">二十五、Effect类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十六、Asset-Type–资产类型"><span class="nav-number">1.26.</span> <span class="nav-text">二十六、Asset Type–资产类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十七、Ledger参数Ledger-Header"><span class="nav-number">1.27.</span> <span class="nav-text">二十七、Ledger参数Ledger Header</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script type="text/javascript" src="/js/src/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2017 -<!--&mdash;--> <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <!--<i class="fa fa-user"></i>-->
+	<i class="fa fa-heart" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">smelond</span>
+
+  
+</div>
+
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共字</span>
+</div>
+
+
+  <span class="post-meta-divider">|</span>
+-->
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<!--
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("MUl4Q9Que76AMXdf28xsNnU0-gzGzoHsz", "BCUNcAcSudJiHptnu7l55oQw");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?c23ef4e5a9bf75e0a9e008154c1ecf90"></script><script>L2Dwidget.init({});</script></body>
+</html>
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
